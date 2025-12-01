@@ -1,0 +1,56 @@
+# --------
+# macOS
+# --------
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Fichiers créés par macOS sur les volumes
+Icon?
+.Spotlight-V100
+.Trashes
+._*
+
+# --------
+# VS Code
+# --------
+.vscode/
+.history/
+*.code-workspace
+
+# --------
+# Node / outils front
+# --------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json.*
+yarn.lock.*
+.pnpm-debug.log*
+
+# Caches et builds
+dist/
+build/
+.cache/
+.parcel-cache/
+.tmp/
+.temp/
+coverage/
+
+# Logs génériques
+*.log
+*.log.*
+
+# Environnements
+.env
+.env.*
+*.local
+
+# Divers
+.sass-cache/
+*.sass-cache
+*.swp
+*.swo
+*.tmp
