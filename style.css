@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: system-ui, sans-serif;
+    background: #111;
+    color: #fff;
+}
+
+/* Container plein écran */
+.wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Effets hover génériques */
+.sect1:hover,
+.sect2:hover,
+.sect3:hover {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+}
+
+/* SECTION 1 : Gauche */
+.sect1 {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(180deg, #6D2DF6, #3B1AC6);
+    clip-path: polygon(
+        0 0,
+        30% 0%,
+        35% 50%,
+        30% 100%,
+        0 100%
+    );
+    z-index: 1;
+    transition: transform .35s ease, filter .25s ease;
+}
+
+/* SECTION 2 : Centre */
+.sect2 {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(180deg, #FF7A7A, #C74343);
+    clip-path: polygon(
+        35% 50%,
+        30% 0%,
+        70% 0%,
+        65% 50%,
+        70% 100%,
+        30% 100%
+    );
+    z-index: 2;
+    transition: transform .35s ease, filter .25s ease;
+}
+
+/* SECTION 3 : Droite */
+.sect3 {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(180deg, #39D0A9, #159B72);
+    clip-path: polygon(
+        70% 0%,
+        100% 0,
+        100% 100%,
+        70% 100%,
+        65% 50%
+    );
+    z-index: 1;
+    transition: transform .35s ease, filter .25s ease;
+}
+
+/* Style des étiquettes */
+.label1,
+.label2,
+.label3 {
+    position: absolute;
+    top: 50%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    transform: translateY(-50%);
+}
+
+.label1 {
+    left: 5%;
+}
+
+.label2 {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.label3 {
+    right: 5%;
+}
+
+.label1 h2,
+.label2 h2,
+.label3 h2 {
+    font-size: 1.6rem;
+    margin-bottom: .25rem;
+}
+
+.label1 p,
+.label2 p,
+.label3 p {
+    font-size: .95rem;
+    opacity: .9;
+}
+
+/* Bouton audio "Play" */
+.btn-audio {
+    margin-top: 0.75rem;
+    background: #000000;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-audio:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(0.92);
+}
+
+.btn-audio:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btn-audio img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Version mobile */
+@media (max-width: 700px) {
+    .sect1, .sect2, .sect3 {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        clip-path: none;
+        width: 100%;
+        height: calc(100vh / 3);
+    }
+  
+    .label1,
+    .label2,
+    .label3 {
+        position: static;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 1rem 0.5rem;
+    }
+}
