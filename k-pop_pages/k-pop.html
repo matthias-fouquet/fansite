@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K-POP - Artistes</title>
+    <link rel="stylesheet" href="k-pop.css" />
+  </head>
+  <body class="kpop-theme">
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+      <a href="index.html" class="home-btn">Accueil</a>
+      <h1 class="center-title">K-POP</h1>
+      <div class="genre-buttons">
+        <a href="rnb.html" class="genre-btn">RNB</a>
+        <a href="pop.html" class="genre-btn">POP</a>
+        <a href="k-pop.html" class="genre-btn">K-POP</a>
+      </div>
+    </header>
+
+    <!-- ================= K-POP / DESCRIPTION ================= -->
+    <section class="history">
+      <div class="history-images">
+        <img src="../images/kpop-base.jpg" alt="k-pop" />
+      </div>
+      <div class="history-text">
+        <h2>L'Histoire de la K-Pop</h2>
+        <p>
+          La <strong>K-Pop</strong> (pop coréenne) est un genre musical
+          originaire de Corée du Sud, célèbre pour ses chansons accrocheuses,
+          ses chorégraphies impressionnantes et ses groupes talentueux. Son
+          succès a inspiré d'autres scènes musicales asiatiques :
+          <strong>J-Pop</strong> (pop japonaise), <strong>C-Pop</strong> (pop
+          chinoise) et <strong>T-Pop</strong> (pop thaïlandaise). Ces genres
+          continuent de séduire le monde entier grâce à leur créativité, leur
+          style unique et leur connexion avec les fans.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= ARTISTES ================= -->
+    <section class="artists-section">
+      <div class="container">
+        <!-- RADIOS CACHÉS -->
+        <input type="radio" name="artist" id="a1" class="hidden-radio" checked />
+        <input type="radio" name="artist" id="a2" class="hidden-radio" />
+        <input type="radio" name="artist" id="a3" class="hidden-radio" />
+
+        <!-- LAYOUT FLEX : cartes à gauche / contenu à droite -->
+        <div class="artists-flex">
+          <!-- CARTES ARTISTES -->
+          <div class="artist-cards">
+            <!-- CARTE 1 -->
+            <label for="a1" class="artist-card">
+              <div class="card">
+                <div class="card-front">
+                  <img src="../images/stray-kids-base.jpg" alt="Stray Kids" />
+                  <div class="card-name">Stray Kids 🇰🇷</div>
+                </div>
+                <div class="card-back">
+                  <div class="card-back-name">Stray Kids</div>
+                </div>
+              </div>
+            </label>
+
+            <!-- CARTE 2 -->
+            <label for="a2" class="artist-card">
+              <div class="card">
+                <div class="card-front">
+                  <img src="../images/ateez-base.jpg" alt="Ateez" />
+                  <div class="card-name">Ateez 🇰🇷</div>
+                </div>
+                <div class="card-back">
+                  <div class="card-back-name">Ateez</div>
+                </div>
+              </div>
+            </label>
+
+            <!-- CARTE 3 -->
+            <label for="a3" class="artist-card">
+              <div class="card">
+                <div class="card-front">
+                  <img src="../images/lykn-base.jpg" alt="Lykn" />
+                  <div class="card-name">Lykn 🇹🇭</div>
+                </div>
+                <div class="card-back">
+                  <div class="card-back-name">Lykn</div>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <!-- CONTENU DES ARTISTES -->
+          <div class="content-area">
+            <!-- PAGE 1 -->
+            <div class="artist-page" id="page1">
+              <div class="artist-header">
+                <div class="artist-image">
+                  <img src="../images/SKZ.jpg" alt="Stray Kids" />
+                </div>
+                <div class="artist-text">
+                  <h2>Stray Kids</h2>
+                  <p><strong>Pays :</strong> Corée du Sud</p>
+                  <p>
+                    Stray Kids est un groupe sud-coréen de K-pop formé par JYP
+                    Entertainment en 2017 et dont les fans se nomme les Stay.
+                    Composé de huit membres — Bang Chan (le leader), Lee Know,
+                    Changbin, Hyunjin, Han, Felix, Seungmin et I.N — le groupe
+                    est reconnu pour son style énergique, ses performances
+                    puissantes et sa participation active à l’écriture et à la
+                    production de ses chansons.
+                  </p>
+                  <p>
+                    Depuis leurs débuts, Stray Kids s’est fait un nom grâce à
+                    des hits comme <em>God’s Menu</em> et <em>Back Door</em>, et
+                    à leur message positif sur la jeunesse, l’indépendance et
+                    l’affirmation de soi.
+                  </p>
+                </div>
+              </div>
+
+              <h3>Top 3 titres</h3>
+              <ul>
+                <li><a href="https://www.youtube.com/watch?v=TQTlCHxyuu8" target="_blank">God's Menu - 2020</a></li>
+                <li><a href="https://www.youtube.com/watch?v=X-uJtV8ScYk" target="_blank">Back Door - 2020</a></li>
+                <li><a href="https://www.youtube.com/watch?v=EaswWiwMVs8" target="_blank">Thunderous - 2021</a></li>
+              </ul>
+
+              <p>
+                <a class="linktree" href="#" target="_blank">🌐 Linktree</a>
+              </p>
+
+              <h3>Galerie</h3>
+              <div class="gallery">
+                <a href="../images/bangchan.jpeg" class="lb"><img src="../images/bangchan.jpeg" alt="BangChan"></a>
+                <a href="../images/felix.jpeg" class="lb"><img src="../images/felix.jpeg" alt="Felix"></a>
+                <a href="../images/han.jpg" class="lb"><img src="../images/han.jpg" alt="Han"></a>
+                <a href="../images/changbin.jpg" class="lb"><img src="../images/changbin.jpg" alt="ChangBin"></a>
+                <a href="../images/Hyunjin.jpeg" class="lb"><img src="../images/Hyunjin.jpeg" alt="Hyunjin"></a>
+                <a href="../images/leeknow.jpeg" class="lb"><img src="../images/leeknow.jpeg" alt="LeeKnow"></a>
+                <a href="../images/in.jpg" class="lb"><img src="../images/in.jpg" alt="IN"></a>
+                <a href="../images/seungmin.jpg" class="lb"><img src="../images/seungmin.jpg" alt="Seungmin"></a>
+                <a href="../images/skz1.jpg" class="lb"><img src="../images/skz1.jpg" alt="SKZ thunderous"></a>
+                <a href="../images/skz2.jpg" class="lb"><img src="../images/skz2.jpg" alt="SKZ maniac"></a>
+              </div>
+            </div>
+
+            <!-- PAGE 2 -->
+            <div class="artist-page" id="page2">
+              <div class="artist-header">
+                <div class="artist-image">
+                  <img src="../images/ATEEZ.jpeg" alt="Ateez" />
+                </div>
+                <div class="artist-text">
+                  <h2>Ateez</h2>
+                  <p><strong>Pays :</strong> Corée du Sud</p>
+                  <p>
+                    ATEEZ est un groupe sud-coréen de K-pop formé par KQ
+                    Entertainment en 2018 et dont les fans se nomme des Atiny.
+                    Composé de huit membres — Hongjoong (le leader), Seonghwa,
+                    Yunho, Yeosang, San, Mingi, Wooyoung et Jongho — le groupe
+                    est reconnu pour ses performances scéniques spectaculaires,
+                    son énergie débordante et son univers musical dynamique
+                    mêlant hip-hop, EDM et pop.
+                  </p>
+                  <p>
+                    Depuis leurs débuts, ATEEZ s’est imposé comme un groupe
+                    incontournable de la nouvelle génération de K-pop grâce à
+                    des hits comme <em>Wonderland</em>, <em>Say My Name</em> et
+                    <em>Guerrilla</em>, tout en transmettant des messages de
+                    courage, de rêve et d’unité.
+                  </p>
+                </div>
+              </div>
+
+              <h3>Top 3 titres</h3>
+              <ul>
+                <li><a href="https://www.youtube.com/watch?v=Z_BhMhZpAug" target="_blank">Wonderland - 2019</a></li>
+                <li><a href="https://www.youtube.com/watch?v=nlnMDttgTbk" target="_blank">Deja Vu - 2021</a></li>
+                <li><a href="https://www.youtube.com/watch?v=U0G5OA6ZH5w" target="_blank">Bouncy - 2023</a></li>
+              </ul>
+
+              <p>
+                <a class="linktree" href="#" target="_blank">🌐 Linktree</a>
+              </p>
+
+              <h3>Galerie</h3>
+              <div class="gallery">
+                <a href="../images/san.jpg" class="lb"><img src="../images/san.jpg" alt="San"></a>
+                <a href="../images/wooyoung.jpeg" class="lb"><img src="../images/wooyoung.jpeg" alt="Wooyoung"></a>
+                <a href="../images/hongjoong.jpeg" class="lb"><img src="../images/hongjoong.jpeg" alt="HongJoong"></a>
+                <a href="../images/yunho.jpeg" class="lb"><img src="../images/yunho.jpeg" alt="Yunho"></a>
+                <a href="../images/mingi.jpeg" class="lb"><img src="../images/mingi.jpeg" alt="Mingi"></a>
+                <a href="../images/jongho.jpeg" class="lb"><img src="../images/jongho.jpeg" alt="Jongho"></a>
+                <a href="../images/seonghwa.jpg" class="lb"><img src="../images/seonghwa.jpg" alt="Seonghwa"></a>
+                <a href="../images/yeosang.jpeg" class="lb"><img src="../images/yeosang.jpeg" alt="Yeosang"></a>
+                <a href="../images/ateez1.jpeg" class="lb"><img src="../images/ateez1.jpeg" alt="Ateez album"></a>
+                <a href="../images/ateez2.jpeg" class="lb"><img src="../images/ateez2.jpeg" alt="ateez backstage"></a>
+              </div>
+            </div>
+
+            <!-- PAGE 3 -->
+            <div class="artist-page" id="page3">
+              <div class="artist-header">
+                <div class="artist-image">
+                  <img src="../images/LYKN.jpeg" alt="Lykn" />
+                </div>
+                <div class="artist-text">
+                  <h2>Lykn</h2>
+                  <p><strong>Pays :</strong> Thaïlande</p>
+                  <p>
+                    LYKN est un boyband thaïlandais formé via l’émission de
+                    survie Project Alpha, et signé sous le label RISER MUSIC
+                    (GMMTV). Le groupe réunit cinq membres: William, Lego, Nut,
+                    Hong et Tui. Ils ont débuté le 5 mai 2023 avec le single
+                    digital «MAY I?».
+                  </p>
+                  <p>
+                    Le nom «LYKN» se prononce «Lycan», en référence à l’idée de
+                    transformation et de puissance — un symbole de l’énergie et
+                    du potentiel du groupe. Leur fandom officiel s’appelle
+                    LYKYOU, une manière d’exprimer leur lien fort avec leurs
+                    fans.
+                  </p>
+                  <p>
+                    Depuis leurs débuts, LYKN s’est vite imposé parmi les jeunes
+                    groupes T-Pop prometteurs, grâce à leurs performances
+                    scéniques, leurs talents en chant et danse, ainsi qu’une
+                    fanbase grandissante, tant en Thaïlande qu’à
+                    l’international.
+                  </p>
+                </div>
+              </div>
+
+              <h3>Top 3 titres</h3>
+              <ul>
+                <li><a href="https://www.youtube.com/watch?v=3B6uubvCtTA" target="_blank">Umm Umm - 2023</a></li>
+                <li><a href="https://www.youtube.com/watch?v=nFp4zjAARFs" target="_blank">Sugoi - 2024</a></li>
+                <li><a href="https://www.youtube.com/watch?v=EZ7AO_G0MkE" target="_blank">Charm - 2024</a></li>
+              </ul>
+
+              <p>
+                <a class="linktree" href="#" target="_blank">🌐 Linktree</a>
+              </p>
+
+              <h3>Galerie</h3>
+              <div class="gallery">
+                <a href="../images/william.jpg" class="lb"><img src="../images/william.jpg" alt="William"></a>
+                <a href="../images/nut.jpg" class="lb"><img src="../images/nut.jpg" alt="Nut"></a>
+                <a href="../images/lego.jpg" class="lb"><img src="../images/lego.jpg" alt="Lego"></a>
+                <a href="../images/hong.jpg" class="lb"><img src="../images/hong.jpg" alt="Hong"></a>
+                <a href="../images/tui.jpeg" class="lb"><img src="../images/tui.jpeg" alt="Tui"></a>
+                <a href="../images/lykn-concert.jpeg" class="lb"><img src="../images/lykn-concert.jpeg" alt="Lykn concert"></a>
+                <a href="../images/lykn-coulisse.jpeg" class="lb"><img src="../images/lykn-coulisse.jpeg" alt="lykn coulisse"></a>
+                <a href="../images/lykn-debut.jpeg" class="lb"><img src="../images/lykn-debut.jpeg" alt="lykn debut"></a>
+                <a href="../images/lykn-magazine.jpeg" class="lb"><img src="../images/lykn-magazine.jpeg" alt="lykn magazine"></a>
+                <a href="../images/lykn-public.jpeg" class="lb"><img src="../images/lykn-public.jpeg" alt="lykn public"></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>

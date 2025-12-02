@@ -1,0 +1,376 @@
+/* ================= RESET ================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= THÈME ================= */
+body.pop-theme {
+  background-color: #fce4ec;
+  color: black;
+}
+
+body.rnb-theme {
+  background-color: #e0f7fa;
+  color: black;
+}
+
+body.kpop-theme {
+  background-color: #f3e5f5;
+  color: black;
+}
+
+/* ================= HEADER ================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 30px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header .home-btn {
+  position: absolute;
+  left: 30px;
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.header .home-btn:hover {
+  background: darkgreen;
+}
+
+.center-title {
+  margin: 0;
+  color: red;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.genre-buttons {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.genre-btn {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.genre-btn:hover {
+  background-color: #e65b50;
+}
+
+/* ================= HISTOIRE ================= */
+.history {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.history-text {
+  flex: 1;
+}
+
+.history-text h2 {
+  color: red;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.history-text p {
+  line-height: 1.5;
+}
+
+.history-images {
+  flex-shrink: 0;
+}
+
+.history-images img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .history {
+    flex-direction: column;
+  }
+  .history-images img {
+    width: 100%;
+  }
+}
+
+/* ================= ARTISTES ================= */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 30px;
+}
+
+.hidden-radio {
+  display: none;
+}
+
+/* ================= ARTISTES : layout flex ================= */
+.artists-flex {
+  display: flex;
+  gap: 40px;
+}
+
+/* Cartes verticales à gauche */
+.artist-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-shrink: 0;
+  perspective: 1000px;
+
+  /* === scroll vertical === */
+  max-height: 820px; /* taille */
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar personnalisée */
+.artist-cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.artist-cards::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.artist-card {
+  cursor: pointer;
+}
+
+.card {
+  width: 180px;
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+#a1:checked ~ .artists-flex .artist-cards label[for="a1"] .card,
+#a2:checked ~ .artists-flex .artist-cards label[for="a2"] .card,
+#a3:checked ~ .artists-flex .artist-cards label[for="a3"] .card {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-name {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff6f61;
+}
+
+.card-back-name {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Contenu à droite */
+.content-area {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+}
+
+.artist-page {
+  display: none;
+  padding: 30px 0;
+  border-radius: 12px;
+  animation: fade 0.3s ease;
+}
+
+.artist-page h2,
+.artist-page h3 {
+  color: red;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#a1:checked ~ .artists-flex .content-area #page1 {
+  display: block;
+}
+#a2:checked ~ .artists-flex .content-area #page2 {
+  display: block;
+}
+#a3:checked ~ .artists-flex .content-area #page3 {
+  display: block;
+}
+
+.gallery img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+.linktree {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: green;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.linktree:hover {
+  background: darkgreen;
+}
+
+/* ================= ARTIST HEADER (image + texte) ================= */
+.artist-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.artist-image {
+  flex-shrink: 0;
+}
+
+.artist-image img {
+  width: 300px; /* largeur fixe */
+  height: 300px; /* hauteur fixe */
+  object-fit: cover; /* remplissage sans déformation */
+  border-radius: 8px; /* arrondi des coins */
+}
+
+.artist-text {
+  flex: 1;
+}
+
+.artist-text h2 {
+  margin-top: 0;
+}
+
+.artist-text p {
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .artists-flex {
+    flex-direction: column;
+  }
+
+  .artist-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-height: none; /* scroll non nécessaire sur mobile */
+  }
+
+  .artist-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .artist-image img {
+    width: 100%;
+    max-width: 1000px;
+    height: auto; /* garde les proportions sur mobile */
+  }
+
+  .artist-text {
+    text-align: center;
+  }
+}
