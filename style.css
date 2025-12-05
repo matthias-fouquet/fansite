@@ -138,9 +138,9 @@ html, body {
 
 /* Bouton audio "Play" */
 .btn-audio {
-    margin-top: 0.75rem;
-    background: #000000;
-    border: none;
+    margin-top: 1rem;
+    background: transparent;
+    border: white 2px solid;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -148,24 +148,23 @@ html, body {
     justify-content: center;
     width: 70px;
     height: 70px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .btn-audio:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.10);
+    /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); */
     filter: brightness(0.92);
 }
 
 .btn-audio:active {
     transform: scale(0.95);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25); */
 }
 
 .btn-audio img {
-    width: 32px;
-    height: 32px;
+    width: 60%;
+    height: 60%;
 }
 
 /* Version mobile */
