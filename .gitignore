@@ -6,7 +6,6 @@
 .LSOverride
 
 # Fichiers créés par macOS sur les volumes
-Icon?
 .Spotlight-V100
 .Trashes
 ._*
@@ -41,7 +40,7 @@ coverage/
 
 # Logs génériques
 *.log
-*.log.*
+.log.
 
 # Environnements
 .env
@@ -54,3 +53,29 @@ coverage/
 *.swp
 *.swo
 *.tmp
+
+# ----------------------------------
+# WINDOWS
+# ----------------------------------
+
+# Thumbs / métadonnées Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dossiers systèmes
+$RECYCLE.BIN/
+System Volume Information/
+
+# Fichiers de configuration Windows
+Desktop.ini
+
+# Fichiers temporaires Windows
+*.lnk
+*.tmp
+*.bak
+*.old
+
+# Fichiers générés par Windows Explorer
+*.stackdump
