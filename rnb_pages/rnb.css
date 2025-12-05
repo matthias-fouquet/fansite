@@ -1,73 +1,99 @@
-/* ================= RESET ================= */
-body {
-    margin: 0;
-    font-family:"Zen Dots", sans-serif;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 120px 15px 40px; /* espace en haut pour laisser la place au header */
-    overflow-x: hidden;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* --- FOND FLOU --- */
+
+/* ================= RESET ================= */
+body {
+  margin: 0;
+  font-family: "Zen Dots", sans-serif;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px 15px 40px;
+  /* espace en haut pour header */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /* empêche scroll vertical */
+}
+
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("../images/acceuil-rnb-vert.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: blur(12px);         /* flou renforcé */
-    transform: scale(1.1);      /* évite les bords visibles du blur */
-    z-index: -1;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../images/acceuil-rnb-vert.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(12px);
+  transform: scale(1.1);
+  z-index: -1;
 }
 
 /* --- CADRE GLASSMORPHISM --- */
 .cadre {
-    max-width: 750px;    /* avant 900px → plus petit */
-    max-height: 65vh;    /* avant ~75vh → plus compact */
-    border-radius: 20px; /* optionnel : plus arrondi */
+  margin-top: 100px;
+  max-width: 750px;
+  /* avant 900px → plus petit */
+  max-height: 80vh;
+  /* avant ~75vh → plus compact */
+  border-radius: 20px;
+  /* optionnel : plus arrondi */
 
-    padding: 25px;
+  padding: 15px;
 
-    background: rgba(255, 255, 255, 0.15); /* beaucoup moins blanc */
-    backdrop-filter: blur(18px);           /* flou interne */
-    -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.15);
+  /* beaucoup moins blanc */
+  backdrop-filter: blur(18px);
+  /* flou interne */
+  -webkit-backdrop-filter: blur(18px);
 
-    border-radius: 25px;
-    overflow-y: auto;
+  border-radius: 25px;
+  overflow-y: auto;
 
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 1025px) {
+  .cadre {
+    max-width: 900px;
+    /* plus large que 750px par défaut */
+  }
 }
 
 .cadre::-webkit-scrollbar {
-    width: 6px;      /* très fin */
+  width: 6px;
+  /* très fin */
 }
 
 .cadre::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 .cadre::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
 }
 
 .cadre::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 
 /* Responsive cadre */
 @media (max-width: 600px) {
-    .cadre {
-        padding: 18px;
-        border-radius: 18px;
-        max-height: 85vh;
-    }
+  .cadre {
+    padding: 18px;
+    border-radius: 18px;
+    max-height: 65vh;
+  }
 }
 
 
@@ -86,87 +112,78 @@ body::before {
 .header {
   position: fixed;
   top: 0;
-  /* left: 0; */
   width: 100%;
-
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  padding: 15px 30px;
-
-  background: rgba(255, 255, 255, 0.115); /* semi-transparent, plus léger */
+  justify-content: space-between;
+  /* extrémités */
+  padding: 10px 30px;
   backdrop-filter: blur(6px);
-
   z-index: 999;
 }
 
-/* POP (gauche) */
-.header .home-btn {
-  position: absolute;
-  left: 30px;
+/* Boutons gauche/droite */
+.left-btn,
+.right-btn {
   color: rgb(154, 66, 66);
   text-decoration: none;
   font-weight: bold;
   border-radius: 8px;
   padding: 10px 15px;
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Titre centré */
+.left-btn:hover,
+.right-btn:hover {
+  background-color: rgba(154, 66, 66, 0.1);
+}
+
+/* Titre central cliquable */
 .header-title {
-    font-family: "Monoton", sans-serif;
-    font-size: 2.6rem;
-    font-weight: 400;
-    color: rgb(154, 66, 66);
-    text-decoration: none;
-    cursor: pointer;
-    text-align: center;
-    flex: none;
-}
-
-/* K-POP (droite) */
-.genre-buttons {
-  position: absolute;
-  right: 30px;
-}
-
-.genre-btn {
+  font-family: "Monoton", sans-serif;
+  /* différente des boutons */
+  font-size: 3rem;
+  /* plus grand */
   color: rgb(154, 66, 66);
   text-decoration: none;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 8px;
+  font-weight: 400;
+  text-align: center;
+  flex: 1;
+  /* prend tout l'espace entre les boutons */
+  margin: 0 20px;
+  /* espace minimal avec les boutons */
+  cursor: pointer;
 }
 
-/* Responsive header */
+.header-title:hover {
+  color: rgb(200, 100, 100);
+  /* effet hover */
+}
+
+/* Responsive */
 @media (max-width: 600px) {
   .header {
-      flex-direction: column;
-      height: auto;
-      padding: 10px;
-      gap: 5px;
-  }
-
-  .home-btn, .genre-buttons {
-      position: static;
+    padding: 10px 15px;
   }
 
   .header-title {
-      font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  .left-btn,
+  .right-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
   }
 }
 
-
-h1 {
-  margin: 0;
-  color: rgb(154, 66, 66); /* rose */
-  font-family: "Monoton", sans-serif;
-  font-weight: 400;
-  font-size: 6rem;
-  text-align: center;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
 
 
 
@@ -177,21 +194,26 @@ h1 {
   padding: 20px 30px;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 800px;       /* rétrécit toute la section */
-  margin: 0 auto;         /* centre la section */
+  max-width: 800px;
+  /* rétrécit toute la section */
+  margin: 0 auto;
+  /* centre la section */
   transform: translateX(40px);
 }
 
 .history-text {
   flex: 1;
-  border-radius: 12px; /* coins arrondis */
-  padding: 20px; /* espace intérieur */
-  background-color: rgba(120, 58, 58, 0.542); /* léger fond transparent pour mettre en valeur le texte */
+  border-radius: 12px;
+  /* coins arrondis */
+  padding: 20px;
+  /* espace intérieur */
+  background-color: rgba(120, 58, 58, 0.542);
+  /* léger fond transparent pour mettre en valeur le texte */
   text-align: justify;
 }
 
 .history-text h2 {
-  color: rgb(154, 66, 66); 
+  color: rgb(154, 66, 66);
   padding: 5px 10px;
   display: inline-block;
   border-radius: 5px;
@@ -208,7 +230,8 @@ h1 {
 
 .history-images img {
   width: 100%;
-  max-width: 220px;   /* Taille maximale plus petite */
+  max-width: 220px;
+  /* Taille maximale plus petite */
   height: auto;
   border-radius: 8px;
   object-fit: contain;
@@ -219,6 +242,7 @@ h1 {
   .history {
     flex-direction: column;
   }
+
   .history-images img {
     width: 100%;
   }
@@ -235,6 +259,52 @@ h1 {
   display: none;
 }
 
+.scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  max-height: none;
+  padding: 0;
+}
+
+/* Par défaut (mobile, tablette) : cartes en ligne + scroll horizontal */
+.artist-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: max-content;
+}
+
+.artist-card {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 250px;
+  cursor: pointer;
+}
+
+/* Scrollbar uniquement sur scroll-wrapper */
+.scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
 .artists-flex {
   display: flex;
   gap: 40px;
@@ -242,33 +312,84 @@ h1 {
 
 .artist-cards {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-  flex-shrink: 0;
-  perspective: 1000px;
-  max-height: 820px;
-  overflow-y: auto;
-  padding-right: 10px;
+  gap: 20px;
+  flex-wrap: nowrap;
+  /* empêche les cartes de passer à la ligne */
 }
+
+.artist-card {
+  flex: 0 0 auto;
+  /* largeur fixe et non rétractable */
+  width: 180px;
+  height: 250px;
+}
+
+.artist-card:first-child {
+  margin-left: 10px;
+  /* décalage début */
+}
+
+.artist-card:last-child {
+  margin-right: 10px;
+  /* décalage fin */
+}
+
 
 /* Scrollbar pour les cartes */
 .artist-cards::-webkit-scrollbar {
   width: 8px;
 }
+
 .artist-cards::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
+
 .artist-cards::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
+
 .artist-cards::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.4);
 }
 
 .artist-card {
   cursor: pointer;
+}
+
+/* À partir de 1024px : cartes en colonne + scroll vertical */
+@media (min-width: 1024px) {
+  .artist-cards {
+    flex-direction: column;
+    gap: 12px;
+    /* petit gap vertical entre cartes */
+    min-width: auto;
+    /* largeur normale */
+    margin: 0;
+    /* suppression marges */
+    padding: 0;
+    /* suppression padding */
+  }
+
+  .scroll-wrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 600px;
+    /* ou autre hauteur fixe/limitée */
+    max-width: 210px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .artist-card {
+    width: 180px;
+    height: 250px;
+    margin-left: 0 !important;
+    /* supprime margin-left si défini ailleurs */
+    margin-right: 0 !important;
+    /* supprime margin-right si défini ailleurs */
+  }
 }
 
 .card {
@@ -280,9 +401,9 @@ h1 {
 }
 
 /* Flip card au clic */
-#a1:checked ~ .artists-flex .artist-cards label[for="a1"] .card,
-#a2:checked ~ .artists-flex .artist-cards label[for="a2"] .card,
-#a3:checked ~ .artists-flex .artist-cards label[for="a3"] .card {
+#a1:checked~.artists-flex .artist-cards label[for="a1"] .card,
+#a2:checked~.artists-flex .artist-cards label[for="a2"] .card,
+#a3:checked~.artists-flex .artist-cards label[for="a3"] .card {
   transform: rotateY(180deg);
 }
 
@@ -310,14 +431,14 @@ h1 {
   font-weight: bold;
   font-size: 18px;
   color: rgb(154, 66, 66);
-  text-shadow: 
-    1px 1px 0px rgba(0,0,0,0.7),
-    2px 2px 0px rgba(0,0,0,0.6),
-    3px 3px 0px rgba(0,0,0,0.5),
-    4px 4px 0px rgba(0,0,0,0.4),
-    5px 5px 3px rgba(0,0,0,0.4),
-    6px 6px 5px rgba(0,0,0,0.35),
-    7px 7px 8px rgba(0,0,0,0.3);
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
 }
 
 .card-back {
@@ -327,27 +448,31 @@ h1 {
   justify-content: center;
 
   background-image: url("../images/page-rnb-logo2.JPG");
-  background-size: cover;     /* remplit entièrement la carte */
-  background-position: center; /* centre l'image */
-  background-repeat: no-repeat; /* évite que l'image se répète */
+  background-size: cover;
+  /* remplit entièrement la carte */
+  background-position: center;
+  /* centre l'image */
+  background-repeat: no-repeat;
+  /* évite que l'image se répète */
 }
 
 
 .card-back-name {
   font-size: 20px;
   color: rgb(154, 66, 66);
-  text-shadow: 
-    1px 1px 0px rgba(0,0,0,0.7),
-    2px 2px 0px rgba(0,0,0,0.6),
-    3px 3px 0px rgba(0,0,0,0.5),
-    4px 4px 0px rgba(0,0,0,0.4),
-    5px 5px 3px rgba(0,0,0,0.4),
-    6px 6px 5px rgba(0,0,0,0.35),
-    7px 7px 8px rgba(0,0,0,0.3);
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
   font-weight: bold;
   text-align: center;
   background-color: rgba(120, 58, 58, 0.888);
-  border-radius: 12px; /* coins arrondis */
+  border-radius: 12px;
+  /* coins arrondis */
   padding: 3%;
 }
 
@@ -355,9 +480,10 @@ h1 {
 .content-area {
   flex: 1;
   padding: 30px;
-  max-height: 800px;
+  max-height: 600px;
   overflow-y: auto;
-  background-color: rgba(120, 58, 58, 0.542); /* léger fond transparent pour mettre en valeur le texte */
+  background-color: rgba(120, 58, 58, 0.542);
+  /* léger fond transparent pour mettre en valeur le texte */
   border-radius: 12px;
 }
 
@@ -365,16 +491,19 @@ h1 {
 .content-area::-webkit-scrollbar {
   width: 8px;
 }
+
 .content-area::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
+
 .content-area::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
+
 .content-area::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .artist-page {
@@ -387,79 +516,74 @@ h1 {
 .artist-page h2,
 .artist-page h3,
 .history-text h2 {
-  color: rgb(35, 2, 2); 
+  color: rgb(35, 2, 2);
   padding: 5px 10px;
   display: inline-block;
   border-radius: 5px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fade {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ================= MASQUER PAGE D'ACCUEIL QUAND ARTISTE SELECTIONNE
 ================= */
-#a1:checked ~ .artists-flex .content-area #default-page,
-#a2:checked ~ .artists-flex .content-area #default-page,
-#a3:checked ~ .artists-flex .content-area #default-page {display: none }
+#a1:checked~.artists-flex .content-area #default-page,
+#a2:checked~.artists-flex .content-area #default-page,
+#a3:checked~.artists-flex .content-area #default-page {
+  display: none
+}
 
 /* Afficher la page de l'artiste correspondant */
-#a1:checked ~ .artists-flex .content-area #page1,
-#a2:checked ~ .artists-flex .content-area #page2,
-#a3:checked ~ .artists-flex .content-area #page3 {display: block}
+#a1:checked~.artists-flex .content-area #page1,
+#a2:checked~.artists-flex .content-area #page2,
+#a3:checked~.artists-flex .content-area #page3 {
+  display: block
+}
 
 /* ================= PAGE D’ACCUEIL ================= */
 .default-page {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 100%;
-padding: 40px;
-animation: fade 0.4s ease;
-z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 40px;
+  animation: fade 0.4s ease;
+  z-index: 1;
 }
 
 .default-content h2 {
-font-size: 24px;
-color:rgb(154, 66, 66);
-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-text-align: justify;
-text-align-last: center;
-background: rgba(255, 255, 255, 0.142);
-padding: 6px 14px;
-border-radius: 5px;
-display: inline-block;
-margin-bottom: 10px;
+  font-size: 24px;
+  color: rgb(154, 66, 66);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-align: justify;
+  text-align-last: center;
+  background: rgba(255, 255, 255, 0.142);
+  padding: 6px 14px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .default-content p {
-font-size: 18px;
-margin-top: 5px;
-text-align: justify;
-color: black;
-}
-
-.arrow {
-  font-size: 40px;
-  margin-bottom: 20px;
-  animation: arrowBounce 1.5s infinite ease-in-out;
-  display: block; /* pour qu'elle respecte le text-align du parent */
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@keyframes arrowBounce {
-    0% {transform: translateX(0)}
-    50% {transform: translateX(-8px)}
-    100% {transform: translateX(0)}
+  font-size: 18px;
+  margin-top: 5px;
+  text-align: justify;
+  color: black;
 }
 
 /*================Top 3===============*/
@@ -476,7 +600,7 @@ color: black;
   padding: 12px 15px;
   border-radius: 8px;
   text-decoration: none;
-  color: rgb(35, 2, 2); 
+  color: rgb(35, 2, 2);
   font-weight: bold;
   transition: 0.3s ease;
 }
@@ -507,7 +631,7 @@ color: black;
   margin-top: 20px;
   padding: 12px 20px;
   background: rgba(255, 255, 255, 0.142);
-  color: rgb(35, 2, 2); 
+  color: rgb(35, 2, 2);
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
@@ -575,7 +699,7 @@ section {
   backdrop-filter: blur(3px);
   border-radius: 22px;
   padding: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* IMAGE history */
@@ -592,7 +716,7 @@ section {
   backdrop-filter: blur(3px);
   border-radius: 12px;
   padding: 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ARTISTS */
@@ -631,11 +755,11 @@ section {
     gap: 30px;
   }
 
-  .artist-cards {
+  /* .artist-cards {
     flex-direction: row;
     gap: 20px;
     justify-content: center;
-  }
+  } */
 
   .content-area {
     max-height: none;
@@ -662,14 +786,14 @@ section {
 
   /* -- HEADER -- */
   .header {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
   }
 
   .genre-buttons {
-   position: static;
-   flex-wrap: wrap;
-   justify-content: center;
+    position: static;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .home-btn {
