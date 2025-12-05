@@ -1,72 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MusicLand</title>
+
+    <!-- Lien vers ton fichier CSS -->
     <link rel="stylesheet" href="style.css">
-    
+
+    <!-- Police d'écriture -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="wrap">
+<div class="wrap">
 
-        <!-- Section 1 -->
-        <div class="sect1">
-            <div class="label1">
-                <h2>POP</h2>
-                <p>découvrir</p>
-
-                <!-- Bouton audio -->
-                <button type="button" class="btn-audio" data-audio="audio-pop">
-                    <img src="icons/play.png" alt="Lecture POP">
-                </button>
-
-                
-            </div>
+    <!-- Section 1 -->
+    <a class="sect sect1" href="pop_pages/pop.html" target="_blank">
+        <div class="bg"></div>
+        <div class="label left-label">
+            <h2>POP</h2>
+            <!-- Bouton audio -->
+            <button type="button" class="btn-audio" data-audio="audio-pop">
+                <img src="icons/play.png" alt="Lecture POP">
+            </button>
         </div>
+    </a>
 
-        <!-- Section 2 -->
-        <div class="sect2">
-            <div class="label2">
-                <h2>RNB</h2>
-                <p>découvrir</p>
-
-                <!-- Bouton audio -->
-                <button type="button" class="btn-audio" data-audio="audio-rnb">
-                    <img src="icons/play.png" alt="Lecture RNB">
-                </button>
-
-                
-            </div>
+    <!-- Section 2 -->
+    <a class="sect sect2" href="rnb_pages/rnb.html" target="_blank">
+        <div class="bg"></div>
+        <div class="label center-label">
+            <h2>RnB</h2>
+            <!-- Bouton audio -->
+            <button type="button" class="btn-audio" data-audio="audio-rnb">
+                <img src="icons/play.png" alt="Lecture RnB">
+            </button>
         </div>
+    </a>
 
-        <!-- Section 3 -->
-        <div class="sect3">
-            <div class="label3">
-                <h2>K-POP</h2>
-                <p>découvrir</p>
-
-                <!-- Bouton audio -->
-                <button type="button" class="btn-audio" data-audio="audio-kpop">
-                    <img src="icons/play.png" alt="Lecture K-POP">
-                </button>
-
-                
-            </div>
+    <!-- Section 3 -->
+    <a class="sect sect3" href="k-pop_pages/k-pop.html" target="_blank">
+        <div class="bg"></div>
+        <div class="label right-label">
+            <h2>K-POP</h2>
+            <!-- Bouton audio -->
+            <button type="button" class="btn-audio" data-audio="audio-kpop">
+                <img src="icons/play.png" alt="Lecture K-POP">
+            </button>
         </div>
+    </a>
 
-    </div>
+</div>
 
-    <!-- Audios -->
-    <audio id="audio-pop" src="audios/pop.mp3"></audio>
-    <audio id="audio-rnb" src="audios/rnb.mp3"></audio>
-    <audio id="audio-kpop" src="audios/k-pop.mp3"></audio>
+<div id="hover-tip">Cliquez pour accéder</div>
 
-    <!-- Script -->
-    <script src="script.js"></script>
+<!-- Audios -->
+<audio id="audio-pop" src="audios/pop.mp3"></audio>
+<audio id="audio-rnb" src="audios/rnb.mp3"></audio>
+<audio id="audio-kpop" src="audios/k-pop.mp3"></audio>
+
+<script src="script.js"></script>
 
 </body>
 </html>
