@@ -1,65 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RNB - Artistes</title>
-    <link rel="stylesheet" href="rnb.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-    
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RNB - Artistes</title>
+  <link rel="stylesheet" href="rnb.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
 </head>
 
-  <body>
-    <!-- ================= HEADER ================= -->
-    <header class="header">
-        <!-- Bouton POP à gauche -->
-        <a href="pop.html" class="home-btn">POP</a>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <a href="pop.html" class="left-btn">POP</a>
 
-        <div class="genre-buttons">
-            <a href="k-pop.html" class="genre-btn">K-POP</a>
-        </div>
+    <!-- Titre central cliquable -->
+    <a href="rnb.html" class="header-title">RNB</a>
 
-        <!-- Titre dynamique cliquable -->
-        <a href="rnb.html" id="header-title" class="header-title"></a>
-    </header>
+    <a href="k-pop.html" class="right-btn">K-POP</a>
+  </header>
 
-    <div class="cadre">
+  <div class="cadre">
 
-      <br>
-      <h1 id="page-title" class="center-title">RNB</h1>
-      <br>
-      <br>
+    <!-- ================= DESCRIPTION ================= -->
+    <section class="history">
+      <div class="history-images">
+        <img src="../images/acceuil-rnb-vert.png" alt="RNB" />
+      </div>
+      <div class="history-text">
+        <h2>L'Histoire du RnB</h2>
+        <p>
+          Le <strong>RNB</strong> (Rhythm and Blues) est un genre musical issu de la communauté afro-américaine,
+          caractérisé par des mélodies soulful, des rythmes groovy et une forte influence du gospel, du funk
+          et de la soul. Il a évolué au fil des décennies pour devenir l'un des styles les plus populaires
+          dans le monde.
+        </p>
+      </div>
+    </section>
 
-      <!-- ================= DESCRIPTION ================= -->
-      <section class="history">
-        <div class="history-images">
-          <img src="../images/acceuil-rnb-vert.png" alt="RNB" />
-        </div>
-        <div class="history-text">
-          <h2>L'Histoire du RnB</h2>
-          <p>
-            Le <strong>RNB</strong> (Rhythm and Blues) est un genre musical issu de la communauté afro-américaine,
-            caractérisé par des mélodies soulful, des rythmes groovy et une forte influence du gospel, du funk
-            et de la soul. Il a évolué au fil des décennies pour devenir l'un des styles les plus populaires
-            dans le monde.
-          </p>
-        </div>
-      </section>
+    <!-- ================= ARTISTES ================= -->
+    <section class="artists-section">
+      <div class="container">
 
-      <!-- ================= ARTISTES ================= -->
-      <section class="artists-section">
-        <div class="container">
+        <!-- RADIO BUTTONS -->
+        <input type="radio" name="artist" id="a1" class="hidden-radio" />
+        <input type="radio" name="artist" id="a2" class="hidden-radio" />
+        <input type="radio" name="artist" id="a3" class="hidden-radio" />
 
-          <!-- RADIO BUTTONS -->
-          <input type="radio" name="artist" id="a1" class="hidden-radio" />
-          <input type="radio" name="artist" id="a2" class="hidden-radio" />
-          <input type="radio" name="artist" id="a3" class="hidden-radio" />
+        <div class="artists-flex">
 
-          <div class="artists-flex">
-
-            <!-- CARTES ARTISTES -->
+          <!-- CARTES ARTISTES -->
+          <div class="scroll-wrapper">
             <div class="artist-cards">
 
               <!-- ARTISTE 1 -->
@@ -101,145 +96,150 @@
                 </div>
               </label>
             </div>
+          </div>
 
-            <!-- ================= CONTENU ARTISTES ================= -->
 
-            <div class="content-area">
+          <!-- ================= CONTENU ARTISTES ================= -->
 
-              <br>
+          <div class="content-area">
 
-              <!-- PAGE D’ACCUEIL AVANT SÉLECTION -->
+            <br>
+
+            <!-- PAGE D’ACCUEIL AVANT SÉLECTION -->
             <div id="default-page">
               <div class="default-content">
-                  <h2>Venez découvrir les artistes de cette catégorie</h2>
-                  <br>
-                  <p>Cliquez sur une carte pour découvrir ses informations.</p>
-                  <div class="arrow">⮘</div>
+                <h2>Venez découvrir les artistes de cette catégorie</h2>
+                <br>
+                <p>Cliquez sur une carte pour découvrir ses informations.</p>
               </div>
             </div>
 
-              <!-- PAGE 1 -->
-              <div class="artist-page" id="page1">
-                <div class="artist-header">
-                  <div class="artist-image">
-                    <img src="../images/page-rnb-wamen2.webp" alt="Artiste 1" />
-                  </div>
-                  <div class="artist-text">
-                    <h2>Wamen</h2>
-                    <p><strong>Pays :</strong> …</p>
-                    <p>Description de l'artiste 1 ici (biographie courte).</p>
-                  </div>
+            <!-- PAGE 1 -->
+            <div class="artist-page" id="page1">
+              <div class="artist-header">
+                <div class="artist-image">
+                  <img src="../images/page-rnb-wamen2.webp" alt="Artiste 1" />
                 </div>
-
-                <h3>Les plus écoutés ! </h3>
-                <ul class="music-list">
-                  <li><a href="https://youtu.be/c76MZRjqZms?si=LHVxtzXHbRg4b1Qr" target="_blank">Discipline</a></li><br>
-                  <li><a href="https://youtu.be/93Tr7duu9-s?si=vWd5G_9hfvkQ_8MA" target="_blank">L'amour est mort (Live Session)</a></li><br>
-                  <li><a href="https://youtu.be/PjFKxNuXbwY?si=hsUXIZ8zx2DJ8Vr1" target="_blank">Jardin</a></li>
-                </ul>
-
-                <br>
-                <h3>liens : </h3>
-                <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
-
-                <h3>Galerie</h3>
-                <div class="gallery">
-                  <img src="../images/page-rnb-wamen3.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen4.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen5.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen6.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen7.PNG" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen8.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen9.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen10.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen11.jpg" alt="photo de l'artise chanteuse Wamen">
-                  <img src="../images/page-rnb-wamen12.jpg" alt="photo de l'artise chanteuse Wamen">
+                <div class="artist-text">
+                  <h2>Wamen</h2>
+                  <p><strong>Pays :</strong> …</p>
+                  <p>Description de l'artiste 1 ici (biographie courte).</p>
                 </div>
               </div>
 
-              <!-- PAGE 2 -->
-              <div class="artist-page" id="page2">
-                <div class="artist-header">
-                  <div class="artist-image">
-                    <img src="../images/page-rnb-riris5.JPG" alt="Artiste 2" />
-                  </div>
-                  <div class="artist-text">
-                    <h2>Rihanna</h2>
-                    <p><strong>Pays :</strong> …</p>
-                    <p>Description de l'artiste 2 ici (biographie courte).</p>
-                  </div>
-                </div>
+              <h3>Les plus écoutés ! </h3>
+              <ul class="music-list">
+                <li><a href="https://youtu.be/c76MZRjqZms?si=LHVxtzXHbRg4b1Qr" target="_blank">Discipline</a></li><br>
+                <li><a href="https://youtu.be/93Tr7duu9-s?si=vWd5G_9hfvkQ_8MA" target="_blank">L'amour est mort (Live
+                    Session)</a></li><br>
+                <li><a href="https://youtu.be/PjFKxNuXbwY?si=hsUXIZ8zx2DJ8Vr1" target="_blank">Jardin</a></li>
+              </ul>
 
-                <h3>Les plus écoutés ! </h3>
-                <ul class="music-list">
-                  <li><a href="https://youtu.be/lWA2pjMjpBs?si=Qgd218JHsTIufRbQ" target="_blank">Diamonds</a></li><br>
-                  <li><a href="https://youtu.be/HL1UzIK-flA?si=3gZqzmtuKRFwKgWC" target="_blank">Work ft. Drake</a></li><br>
-                  <li><a href="https://youtu.be/CvBfHwUxHIk?si=9oA6aXhQyeObeWj6" target="_blank">Umbrella ft. JAY-Z</a></li>
-                </ul>
+              <br>
+              <h3>liens : </h3>
+              <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
 
-                <br>
-                <h3>Liens : </h3>
-                <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
-
-                <h3>Galerie</h3>
-                <div class="gallery">
-                  <img src="../images/page-rnb-riri2.jpg" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri3.JPG" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri4.JPG" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri6.JPG" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri7.JPG" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri8.GIF" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri9.JPG" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri10.JPG" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri11.JPG" alt="photo de l'artise chanteuse Rihanna">
-                  <img src="../images/page-rnb-riri12.JPG" alt="photo de l'artise chanteuse Rihanna">
-                </div>
+              <h3>Galerie</h3>
+              <div class="gallery">
+                <img src="../images/page-rnb-wamen3.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen4.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen5.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen6.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen7.PNG" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen8.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen9.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen10.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen11.jpg" alt="photo de l'artise chanteuse Wamen">
+                <img src="../images/page-rnb-wamen12.jpg" alt="photo de l'artise chanteuse Wamen">
               </div>
-
-              <!-- PAGE 3 -->
-              <div class="artist-page" id="page3">
-                <div class="artist-header">
-                  <div class="artist-image">
-                    <img src="../images/page-rnb-tylas10.JPG" alt="Artiste 3" />
-                  </div>
-                  <div class="artist-text">
-                    <h2>Tyla</h2>
-                    <p><strong>Pays :</strong></p>
-                    <p>Description de l'artiste 3 ici (biographie courte).</p>
-                  </div>
-                </div>
-
-                <h3>Les plus écoutés ! </h3>
-                <ul class="music-list">
-                  <li><a href="https://youtu.be/XoiOOiuH8iI?si=Fh4dZE1-GVj9B4ZJ" target="_blank">Water</a></li>
-                  <li><a href="https://youtu.be/uLK2r3sG4lE?si=P2djjRogCDtLenrb" target="_blank">Push 2 Start</a></li>
-                  <li><a href="https://youtu.be/mGyN2NMuS4A?si=BxoBVntq53Jc30d_" target="_blank">ART</a></li>
-                </ul>
-
-                <br>
-                <h3>Liens : </h3>
-                <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
-
-                <h3>Galerie</h3>
-                <div class="gallery">
-                  <img src="../images/page-rnb-tyla2.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla3.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla4.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla5.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla6.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla7.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla8.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla9.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla11.JPG" alt="photo de l'artise chanteuse Tyla">
-                  <img src="../images/page-rnb-tyla12.JPG" alt="photo de l'artise chanteuse Tyla">
-                </div>
-              </div>
-
             </div>
+
+            <!-- PAGE 2 -->
+            <div class="artist-page" id="page2">
+              <div class="artist-header">
+                <div class="artist-image">
+                  <img src="../images/page-rnb-riris5.JPG" alt="Artiste 2" />
+                </div>
+                <div class="artist-text">
+                  <h2>Rihanna</h2>
+                  <p><strong>Pays :</strong> …</p>
+                  <p>Description de l'artiste 2 ici (biographie courte).</p>
+                </div>
+              </div>
+
+              <h3>Les plus écoutés ! </h3>
+              <ul class="music-list">
+                <li><a href="https://youtu.be/lWA2pjMjpBs?si=Qgd218JHsTIufRbQ" target="_blank">Diamonds</a></li><br>
+                <li><a href="https://youtu.be/HL1UzIK-flA?si=3gZqzmtuKRFwKgWC" target="_blank">Work ft. Drake</a></li>
+                <br>
+                <li><a href="https://youtu.be/CvBfHwUxHIk?si=9oA6aXhQyeObeWj6" target="_blank">Umbrella ft. JAY-Z</a>
+                </li>
+              </ul>
+
+              <br>
+              <h3>Liens : </h3>
+              <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
+
+              <h3>Galerie</h3>
+              <div class="gallery">
+                <img src="../images/page-rnb-riri2.jpg" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri3.JPG" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri4.JPG" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri6.JPG" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri7.JPG" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri8.GIF" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri9.JPG" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri10.JPG" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri11.JPG" alt="photo de l'artise chanteuse Rihanna">
+                <img src="../images/page-rnb-riri12.JPG" alt="photo de l'artise chanteuse Rihanna">
+              </div>
+            </div>
+
+            <!-- PAGE 3 -->
+            <div class="artist-page" id="page3">
+              <div class="artist-header">
+                <div class="artist-image">
+                  <img src="../images/page-rnb-tylas10.JPG" alt="Artiste 3" />
+                </div>
+                <div class="artist-text">
+                  <h2>Tyla</h2>
+                  <p><strong>Pays :</strong></p>
+                  <p>Description de l'artiste 3 ici (biographie courte).</p>
+                </div>
+              </div>
+
+              <h3>Les plus écoutés ! </h3>
+              <ul class="music-list">
+                <li><a href="https://youtu.be/XoiOOiuH8iI?si=Fh4dZE1-GVj9B4ZJ" target="_blank">Water</a></li><br>
+                <li><a href="https://youtu.be/uLK2r3sG4lE?si=P2djjRogCDtLenrb" target="_blank">Push 2 Start</a></li><br>
+                <li><a href="https://youtu.be/mGyN2NMuS4A?si=BxoBVntq53Jc30d_" target="_blank">ART</a></li>
+              </ul>
+
+              <br>
+              <h3>Liens : </h3>
+              <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
+
+              <h3>Galerie</h3>
+              <div class="gallery">
+                <img src="../images/page-rnb-tyla2.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla3.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla4.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla5.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla6.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla7.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla8.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla9.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla11.JPG" alt="photo de l'artise chanteuse Tyla">
+                <img src="../images/page-rnb-tyla12.JPG" alt="photo de l'artise chanteuse Tyla">
+              </div>
+            </div>
+
           </div>
         </div>
-      </section>
-    </div>
-    <script src="rnb.js"></script>
-  </body>
+      </div>
+    </section>
+  </div>
+  <script src="rnb.js"></script>
+</body>
+
 </html>
