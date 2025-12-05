@@ -1,0 +1,773 @@
+/* ================= RESET ================= */
+body {
+    margin: 0;
+    font-family:"Zen Dots", sans-serif;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 120px 15px 40px; /* espace en haut pour laisser la place au header */
+    overflow-x: hidden;
+}
+
+/* --- FOND FLOU --- */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("../images/acceuil-rnb-vert.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(12px);         /* flou renforcé */
+    transform: scale(1.1);      /* évite les bords visibles du blur */
+    z-index: -1;
+}
+
+/* --- CADRE GLASSMORPHISM --- */
+.cadre {
+    max-width: 750px;    /* avant 900px → plus petit */
+    max-height: 65vh;    /* avant ~75vh → plus compact */
+    border-radius: 20px; /* optionnel : plus arrondi */
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.15); /* beaucoup moins blanc */
+    backdrop-filter: blur(18px);           /* flou interne */
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 25px;
+    overflow-y: auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+.cadre::-webkit-scrollbar {
+    width: 6px;      /* très fin */
+}
+
+.cadre::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cadre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+}
+
+.cadre::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Responsive cadre */
+@media (max-width: 600px) {
+    .cadre {
+        padding: 18px;
+        border-radius: 18px;
+        max-height: 85vh;
+    }
+}
+
+
+
+
+/* ================= ANIMATION DÉGRADÉ ================= */
+/*
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+*/
+
+/* ================= HEADER ================= */
+.header {
+  position: fixed;
+  top: 0;
+  /* left: 0; */
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 30px;
+
+  background: rgba(255, 255, 255, 0.115); /* semi-transparent, plus léger */
+  backdrop-filter: blur(6px);
+
+  z-index: 999;
+}
+
+/* POP (gauche) */
+.header .home-btn {
+  position: absolute;
+  left: 30px;
+  color: rgb(154, 66, 66);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+/* Titre centré */
+.header-title {
+    font-family: "Monoton", sans-serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+    color: rgb(154, 66, 66);
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    flex: none;
+}
+
+/* K-POP (droite) */
+.genre-buttons {
+  position: absolute;
+  right: 30px;
+}
+
+.genre-btn {
+  color: rgb(154, 66, 66);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* Responsive header */
+@media (max-width: 600px) {
+  .header {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+      gap: 5px;
+  }
+
+  .home-btn, .genre-buttons {
+      position: static;
+  }
+
+  .header-title {
+      font-size: 1.8rem;
+  }
+}
+
+
+h1 {
+  margin: 0;
+  color: rgb(154, 66, 66); /* rose */
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-size: 6rem;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+
+
+/* ================= HISTOIRE ================= */
+.history {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 800px;       /* rétrécit toute la section */
+  margin: 0 auto;         /* centre la section */
+  transform: translateX(40px);
+}
+
+.history-text {
+  flex: 1;
+  border-radius: 12px; /* coins arrondis */
+  padding: 20px; /* espace intérieur */
+  background-color: rgba(120, 58, 58, 0.542); /* léger fond transparent pour mettre en valeur le texte */
+  text-align: justify;
+}
+
+.history-text h2 {
+  color: rgb(154, 66, 66); 
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.history-text p {
+  line-height: 1.5;
+}
+
+.history-images {
+  flex-shrink: 0;
+}
+
+.history-images img {
+  width: 100%;
+  max-width: 220px;   /* Taille maximale plus petite */
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+
+@media (max-width: 768px) {
+  .history {
+    flex-direction: column;
+  }
+  .history-images img {
+    width: 100%;
+  }
+}
+
+/* ================= ARTISTES ================= */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 30px;
+}
+
+.hidden-radio {
+  display: none;
+}
+
+.artists-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.artist-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-shrink: 0;
+  perspective: 1000px;
+  max-height: 820px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar pour les cartes */
+.artist-cards::-webkit-scrollbar {
+  width: 8px;
+}
+.artist-cards::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+.artist-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.artist-cards::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.artist-card {
+  cursor: pointer;
+}
+
+.card {
+  width: 180px;
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Flip card au clic */
+#a1:checked ~ .artists-flex .artist-cards label[for="a1"] .card,
+#a2:checked ~ .artists-flex .artist-cards label[for="a2"] .card,
+#a3:checked ~ .artists-flex .artist-cards label[for="a3"] .card {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-name {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(154, 66, 66);
+  text-shadow: 
+    1px 1px 0px rgba(0,0,0,0.7),
+    2px 2px 0px rgba(0,0,0,0.6),
+    3px 3px 0px rgba(0,0,0,0.5),
+    4px 4px 0px rgba(0,0,0,0.4),
+    5px 5px 3px rgba(0,0,0,0.4),
+    6px 6px 5px rgba(0,0,0,0.35),
+    7px 7px 8px rgba(0,0,0,0.3);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("../images/page-rnb-logo2.JPG");
+  background-size: cover;     /* remplit entièrement la carte */
+  background-position: center; /* centre l'image */
+  background-repeat: no-repeat; /* évite que l'image se répète */
+}
+
+
+.card-back-name {
+  font-size: 20px;
+  color: rgb(154, 66, 66);
+  text-shadow: 
+    1px 1px 0px rgba(0,0,0,0.7),
+    2px 2px 0px rgba(0,0,0,0.6),
+    3px 3px 0px rgba(0,0,0,0.5),
+    4px 4px 0px rgba(0,0,0,0.4),
+    5px 5px 3px rgba(0,0,0,0.4),
+    6px 6px 5px rgba(0,0,0,0.35),
+    7px 7px 8px rgba(0,0,0,0.3);
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(120, 58, 58, 0.888);
+  border-radius: 12px; /* coins arrondis */
+  padding: 3%;
+}
+
+/* ================= CONTENT AREA ================= */
+.content-area {
+  flex: 1;
+  padding: 30px;
+  max-height: 800px;
+  overflow-y: auto;
+  background-color: rgba(120, 58, 58, 0.542); /* léger fond transparent pour mettre en valeur le texte */
+  border-radius: 12px;
+}
+
+/* Scrollbar pour content area */
+.content-area::-webkit-scrollbar {
+  width: 8px;
+}
+.content-area::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+.content-area::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.4);
+}
+
+.artist-page {
+  display: none;
+  padding: 30px 0;
+  border-radius: 12px;
+  animation: fade 0.3s ease;
+}
+
+.artist-page h2,
+.artist-page h3,
+.history-text h2 {
+  color: rgb(35, 2, 2); 
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= MASQUER PAGE D'ACCUEIL QUAND ARTISTE SELECTIONNE
+================= */
+#a1:checked ~ .artists-flex .content-area #default-page,
+#a2:checked ~ .artists-flex .content-area #default-page,
+#a3:checked ~ .artists-flex .content-area #default-page {display: none }
+
+/* Afficher la page de l'artiste correspondant */
+#a1:checked ~ .artists-flex .content-area #page1,
+#a2:checked ~ .artists-flex .content-area #page2,
+#a3:checked ~ .artists-flex .content-area #page3 {display: block}
+
+/* ================= PAGE D’ACCUEIL ================= */
+.default-page {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+height: 100%;
+padding: 40px;
+animation: fade 0.4s ease;
+z-index: 1;
+}
+
+.default-content h2 {
+font-size: 24px;
+color:rgb(154, 66, 66);
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+text-align: justify;
+text-align-last: center;
+background: rgba(255, 255, 255, 0.142);
+padding: 6px 14px;
+border-radius: 5px;
+display: inline-block;
+margin-bottom: 10px;
+}
+
+.default-content p {
+font-size: 18px;
+margin-top: 5px;
+text-align: justify;
+color: black;
+}
+
+.arrow {
+  font-size: 40px;
+  margin-bottom: 20px;
+  animation: arrowBounce 1.5s infinite ease-in-out;
+  display: block; /* pour qu'elle respecte le text-align du parent */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes arrowBounce {
+    0% {transform: translateX(0)}
+    50% {transform: translateX(-8px)}
+    100% {transform: translateX(0)}
+}
+
+/*================Top 3===============*/
+
+.music-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.music-list li a {
+  display: block;
+  background: rgba(255, 255, 255, 0.142);
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgb(35, 2, 2); 
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.music-list li a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.03);
+}
+
+
+/* ================= GALERIE ================= */
+.gallery img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  border: 2px solid #cda4ff;
+}
+
+.linktree {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.142);
+  color: rgb(35, 2, 2); 
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.linktree:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ================= ARTIST HEADER (IMAGE + TEXTE) ================= */
+.artist-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.artist-image {
+  flex-shrink: 0;
+}
+
+.artist-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.artist-text {
+  flex: 1;
+}
+
+.artist-text h2 {
+  margin-top: 0;
+}
+
+.artist-text p {
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+
+/* ------- STYLE CHIC + ESPACÉ ------- */
+
+section {
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+
+/* HISTORY */
+.history {
+  max-width: 75%;
+  margin: 50px auto;
+  padding: 30px 20px;
+  gap: 30px;
+  justify-content: center;
+  transform: none;
+}
+
+.history-text {
+  background: rgba(120, 58, 58, 0.45);
+  backdrop-filter: blur(3px);
+  border-radius: 22px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* IMAGE history */
+.history-images img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* CONTENT AREA */
+.content-area {
+  background: rgba(120, 58, 58, 0.45);
+  backdrop-filter: blur(3px);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ARTISTS */
+.artists-flex {
+  gap: 50px;
+}
+
+.artist-text {
+  background: rgba(120, 58, 58, 0.35);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/*==========responsive==========*/
+/* ============================ */
+/*          TABLETTE            */
+/* ============================ */
+@media (max-width: 1024px) {
+
+  h1.center-title {
+    font-size: 4rem;
+  }
+
+  .history {
+    max-width: 600px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .history-images img {
+    max-width: 180px;
+  }
+
+  .artists-flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .artist-cards {
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .content-area {
+    max-height: none;
+    padding: 20px;
+  }
+
+  .artist-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .artist-image img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+
+/* ============================ */
+/*           MOBILE             */
+/* ============================ */
+@media (max-width: 768px) {
+
+  /* -- HEADER -- */
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .genre-buttons {
+   position: static;
+   flex-wrap: wrap;
+   justify-content: center;
+  }
+
+  .home-btn {
+    position: static !important;
+    margin-bottom: 10px;
+  }
+
+
+  /* --- TITRE --- */
+  h1.center-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+
+  /* --- HISTORY --- */
+  .history {
+    flex-direction: column;
+    max-width: 90%;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .history-images img {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+
+  .history-text {
+    text-align: justify;
+    padding: 15px;
+  }
+
+
+  /* --- CARTES ARTISTES --- */
+  .artist-cards {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+  }
+
+  .artist-card {
+    scroll-snap-align: center;
+  }
+
+  .card {
+    width: 160px;
+    height: 220px;
+  }
+
+
+  /* --- CONTENT AREA --- */
+  .content-area {
+    padding: 15px;
+    max-height: none;
+    width: 100%;
+  }
+
+
+  /* --- ARTIST PAGE --- */
+  .artist-header {
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .artist-image img {
+    width: 90%;
+    height: auto;
+  }
+
+
+  /* --- GALLERIE --- */
+  .gallery img {
+    width: 45%;
+    height: 150px;
+  }
+
+}
+
+
+/* ============================ */
+/*         TRES PETITS          */
+/* ============================ */
+@media (max-width: 450px) {
+
+  h1.center-title {
+    font-size: 2.3rem;
+  }
+
+  .card {
+    width: 150px;
+    height: 200px;
+  }
+
+  .gallery img {
+    width: 48%;
+    height: 130px;
+  }
+}
