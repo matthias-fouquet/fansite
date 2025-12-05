@@ -1,3 +1,6 @@
+/* ----------------------- */
+/* STRUCTURE GENERALE */
+/* ----------------------- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +14,6 @@ html, body {
     color: #fff;
 }
 
-/* Container plein écran */
 .wrap {
     position: relative;
     width: 100%;
@@ -19,124 +21,118 @@ html, body {
     overflow: hidden;
 }
 
-/* Effets hover génériques */
-.sect1:hover,
-.sect2:hover,
-.sect3:hover {
+/* ----------------------- */
+/* SECTIONS BASE */
+/* ----------------------- */
+.sect {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    transition: transform .35s ease, filter .25s ease;
+    overflow: hidden;
+}
+
+/* Position et clip-path desktop */
+.sect1 { justify-content: left;   clip-path: polygon(0 0, 30% 0, 35% 50%, 30% 100%, 0 100%); }
+.sect2 { justify-content: center; clip-path: polygon(35% 50%, 30% 0, 70% 0, 65% 50%, 70% 100%, 30% 100%); }
+.sect3 { justify-content: right;  clip-path: polygon(70% 0, 100% 0, 100% 100%, 70% 100%, 65% 50%); }
+
+/* ----------------------- */
+/* IMAGE PRINCIPALE (.bg) */
+/* ----------------------- */
+.bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    filter: blur(2px) brightness(0.85);
+    transition: background-image 0.35s ease, filter 0.25s ease,
+                background-size 0.35s ease, background-position 0.35s ease;
+}
+
+/* Images fixes */
+.sect1 .bg { background-image: url("images/acceuil-pop-vert.png");  background-position:   0% center; }
+.sect2 .bg { background-image: url("images/acceuil-rnb-vert.png");  background-position:  50% center; }
+.sect3 .bg { background-image: url("images/acceuil-kpop-ver.png"); background-position: 100% center; }
+
+/* ----------------------- */
+/* HOVER GIFS */
+/* ----------------------- */
+.sect1:hover .bg {
+    background-image: url("images/acceuil-pop-gif.gif");
+    filter: none;
+    background-size: contain;
+    background-position: left center;
+}
+.sect2:hover .bg {
+    background-image: url("images/acceuil-rnb-gif.gif");
+    filter: none;
+    background-size: contain;
+    background-position: center center;
+}
+.sect3:hover .bg {
+    background-image: url("images/acceuil-kpop-gif.gif");
+    filter: none;
+    background-size: contain;
+    background-position: right center;
+}
+
+/* Hover léger sur toute la section */
+.sect:hover {
     transform: scale(1.02);
-    filter: brightness(1.05);
+    filter: brightness(1);
 }
 
-/* SECTION 1 : Gauche */
-.sect1 {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    background: linear-gradient(180deg, #6D2DF6, #3B1AC6);
-    clip-path: polygon(
-        0 0,
-        30% 0%,
-        35% 50%,
-        30% 100%,
-        0 100%
-    );
-    z-index: 1;
-    transition: transform .35s ease, filter .25s ease;
-}
-
-/* SECTION 2 : Centre */
-.sect2 {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    background: linear-gradient(180deg, #FF7A7A, #C74343);
-    clip-path: polygon(
-        35% 50%,
-        30% 0%,
-        70% 0%,
-        65% 50%,
-        70% 100%,
-        30% 100%
-    );
+/* ----------------------- */
+/* LABELS / TEXTE */
+/* ----------------------- */
+.label {
+    position: relative;
     z-index: 2;
-    transition: transform .35s ease, filter .25s ease;
-}
-
-/* SECTION 3 : Droite */
-.sect3 {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    cursor: pointer;
     color: white;
-    text-decoration: none;
-    background: linear-gradient(180deg, #39D0A9, #159B72);
-    clip-path: polygon(
-        70% 0%,
-        100% 0,
-        100% 100%,
-        70% 100%,
-        65% 50%
-    );
-    z-index: 1;
-    transition: transform .35s ease, filter .25s ease;
-}
-
-/* Style des étiquettes */
-.label1,
-.label2,
-.label3 {
-    position: absolute;
-    top: 50%;
+    padding: 1rem 1.5rem;
     width: 20%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1rem 1.5rem;
-    transform: translateY(-50%);
 }
 
-.label1 {
-    left: 5%;
-}
+.left-label  { left: 5%; }
+.center-label { margin: 0 auto; }
+.right-label { right: 5%; }
 
-.label2 {
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.label3 {
-    right: 5%;
-}
-
-.label1 h2,
-.label2 h2,
-.label3 h2 {
-    font-size: 1.6rem;
+h2 {
+    font-family: "Bagel Fat One", system-ui;
+    font-size: 2.4rem;
     margin-bottom: .25rem;
 }
 
-.label1 p,
-.label2 p,
-.label3 p {
+p {
     font-size: .95rem;
     opacity: .9;
 }
 
-/* Bouton audio "Play" */
+.label {
+    text-shadow:
+        -1px -1px 2px rgba(255,255,255,0.8),
+        2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.sect1 .label { color: #c98643; }
+.sect2 .label { color: #7f2d26; }
+.sect3 .label { color: #ffc6ff; }
+
+/* ----------------------- */
+/* BOUTON AUDIO */
+/* ----------------------- */
 .btn-audio {
     margin-top: 1rem;
     background: transparent;
@@ -146,49 +142,126 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .btn-audio:hover {
     transform: scale(1.10);
-    /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); */
     filter: brightness(0.92);
 }
 
 .btn-audio:active {
     transform: scale(0.95);
-    /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25); */
 }
 
 .btn-audio img {
-    width: 60%;
+    width: 40%;
     height: 60%;
 }
 
-/* Version mobile */
+/* Bouton en lecture : animation */
+.btn-audio.is-playing {
+    animation: pulse-btn 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse-btn {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* ----------------------- */
+/* TOOLTIP HOVER */
+/* ----------------------- */
+#hover-tip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 6px 12px;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 9999;
+}
+
+/* ----------------------- */
+/* MEDIA < 700px (Mobile) */
+/* ----------------------- */
 @media (max-width: 700px) {
-    .sect1, .sect2, .sect3 {
+
+    .wrap {
+        height: auto;
+    }
+
+    .sect {
         position: relative;
-        justify-content: center;
-        align-items: center;
         clip-path: none;
         width: 100%;
         height: calc(100vh / 3);
+        justify-content: center;      /* centre le contenu horizontalement */
+        align-items: center;          /* centre verticalement */
     }
-  
-    .label1,
-    .label2,
-    .label3 {
-        position: static;
-        top: auto;
-        left: auto;
-        right: auto;
-        transform: none;
+
+    .sect::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        filter: blur(6px) brightness(0.7);
+        transition: background-image 0.35s ease, filter 0.25s ease;
+    }
+
+    .sect1::before { background-image: url("images/acceuil-pop-hor.png"); }
+    .sect2::before { background-image: url("images/acceuil-rnb-hor.png"); }
+    .sect3::before { background-image: url("images/acceuil-kpop-hor.png"); }
+
+    .label {
         width: 100%;
-        margin: 0 auto;
-        text-align: center;
         padding: 1rem 0.5rem;
     }
+
+    /* on annule les décalages gauche/droite des labels */
+    .left-label,
+    .center-label,
+    .right-label {
+        left: auto;
+        right: auto;
+        margin: 0 auto;
+    }
+}
+
+/* ----------------------- */
+/* MEDIA LARGE >=1200px */
+/* ----------------------- */
+@media (min-width: 1200px) {
+    .sect::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px) brightness(0.7);
+    }
+
+    .sect1::before { background-image: url("images/acceuil-pop-hor.png"); }
+    .sect2::before { background-image: url("images/acceuil-rnb-hor.png"); }
+    .sect3::before { background-image: url("images/acceuil-kpop-hor.png"); }
+
+    .sect1 .bg { background-size: 35% 100%; background-position: left; }
+    .sect2 .bg { background-size: 50% 100%; background-position: center; }
+    .sect3 .bg { background-size: 45% 100%; background-position: right; }
+
+    .sect1:hover .bg { background-position: 5% center; }
+    .sect3:hover .bg { background-position: 95% center; }
 }
