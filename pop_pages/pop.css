@@ -1,0 +1,831 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ================= RÉINITIALISATION ================= */
+body {
+  margin: 0;
+  font-family: "Bitcount Prop Single", system-ui;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px 15px 40px;
+  /* espace en haut pour le header */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /* empêche le scroll vertical */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../images/acceuil-pop-vert.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(12px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+/* --- CADRE GLASSMORPHISM --- */
+.cadre {
+  margin-top: 100px;
+  max-width: 750px;
+  max-height: 80vh;
+  border-radius: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 25px;
+  overflow-y: auto;
+}
+
+@media (min-width: 1025px) {
+  .cadre {
+    max-width: 900px;
+  }
+}
+
+.cadre::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cadre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cadre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+}
+
+.cadre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Cadre adaptatif (responsive) */
+@media (max-width: 600px) {
+  .cadre {
+    padding: 18px;
+    border-radius: 18px;
+  }
+}
+
+/* ================= HEADER ================= */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  backdrop-filter: blur(3px);
+  z-index: 999;
+}
+
+/* Boutons gauche/droite */
+.left-btn,
+.right-btn {
+  color: rgb(34, 0, 255);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+.left-btn:hover,
+.right-btn:hover {
+  background-color: rgba(255, 251, 0, 0.1);
+}
+
+/* Titre central cliquable */
+.header-title {
+  font-family: "Bitcount Prop Single", system-ui;
+  font-style: italic;
+  font-size: 4rem;
+  color: rgb(34, 0, 255);
+  text-decoration: none;
+  font-weight: 400;
+  text-align: center;
+  flex: 1;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.header-title:hover {
+  color: rgb(255, 200, 0);
+}
+
+/* Responsive du header */
+@media (max-width: 600px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .left-btn,
+  .right-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+/* ================= HISTOIRE ================= */
+.history {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+  transform: translateX(40px);
+}
+
+.history-text {
+  flex: 1;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: rgb(255, 200, 0);
+  text-align: justify;
+}
+
+.history-text h2 {
+  color: rgb(25, 0, 255);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.history-text p {
+  line-height: 1.5;
+}
+
+.history-images {
+  flex-shrink: 0;
+}
+
+.history-images img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+
+@media (max-width: 768px) {
+  .history {
+    flex-direction: column;
+  }
+
+  .history-images img {
+    width: 100%;
+  }
+}
+
+/* ================= ARTISTES ================= */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 30px;
+}
+
+.hidden-radio {
+  display: none;
+}
+
+.scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  max-height: none;
+  padding: 0;
+}
+
+.artist-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: max-content;
+}
+
+.artist-card {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 250px;
+  cursor: pointer;
+}
+
+/* Scrollbar uniquement sur le conteneur de défilement horizontal */
+.scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
+.artists-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.artist-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  /* empêche les cartes de passer à la ligne */
+}
+
+.artist-card {
+  flex: 0 0 auto;
+  /* largeur fixe et non rétractable */
+  width: 180px;
+  height: 250px;
+}
+
+.artist-card:first-child {
+  margin-left: 10px;
+  /* décalage au début de la liste */
+}
+
+.artist-card:last-child {
+  margin-right: 10px;
+  /* décalage à la fin de la liste */
+}
+
+/* Scrollbar pour les cartes */
+.artist-cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.artist-cards::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.artist-card {
+  cursor: pointer;
+}
+
+/* À partir de 1024px : cartes en colonne + scroll vertical */
+@media (min-width: 1024px) {
+  .artist-cards {
+    flex-direction: column;
+    gap: 12px;
+    min-width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .scroll-wrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 600px;
+    max-width: 210px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .artist-card {
+    width: 180px;
+    height: 250px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+.card {
+  width: 180px;
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Effet flip de la carte au clic */
+#a1:checked~.artists-flex .artist-cards label[for="a1"] .card,
+#a2:checked~.artists-flex .artist-cards label[for="a2"] .card,
+#a3:checked~.artists-flex .artist-cards label[for="a3"] .card {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-name {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(8, 0, 255);
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("../images/pop-Affiche_arrière.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.card-back-name {
+  font-size: 20px;
+  color: rgb(8, 0, 255);
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(255, 174, 0, 0.888);
+  border-radius: 12px;
+  padding: 3%;
+}
+
+/* ================= ZONE DE CONTENU ================= */
+.content-area {
+  flex: 1;
+  padding: 30px;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: rgba(120, 58, 58, 0.542);
+  /* léger fond transparent pour mettre en valeur le texte */
+  border-radius: 12px;
+}
+
+/* Barre de défilement pour la zone de contenu */
+.content-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.artist-page {
+  display: none;
+  padding: 30px 0;
+  border-radius: 12px;
+  animation: fade 0.3s ease;
+}
+
+.artist-page h2,
+.artist-page h3,
+.history-text h2 {
+  color: rgb(71, 44, 248);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MASQUER LA PAGE D'ACCUEIL QUAND UN ARTISTE EST SÉLECTIONNÉ ================= */
+#a1:checked~.artists-flex .content-area #default-page,
+#a2:checked~.artists-flex .content-area #default-page,
+#a3:checked~.artists-flex .content-area #default-page {
+  display: none
+}
+
+/* Afficher la page de l’artiste correspondant */
+#a1:checked~.artists-flex .content-area #page1,
+#a2:checked~.artists-flex .content-area #page2,
+#a3:checked~.artists-flex .content-area #page3 {
+  display: block
+}
+
+/* ================= PAGE D’ACCUEIL ================= */
+.default-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 40px;
+  animation: fade 0.4s ease;
+  z-index: 1;
+}
+
+.default-content h2 {
+  font-size: 24px;
+  color: rgb(0, 55, 255);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-align: justify;
+  text-align-last: center;
+  background: rgba(255, 255, 255, 0.142);
+  padding: 6px 14px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.default-content p {
+  font-size: 18px;
+  margin-top: 5px;
+  text-align: justify;
+  color: rgb(0, 64, 255);
+}
+
+/*================Top 3===============*/
+.music-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.music-list li a {
+  display: block;
+  background: rgba(255, 255, 255, 0.142);
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgb(35, 2, 2);
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.music-list li a:hover {
+  background: rgba(17, 0, 255, 0.25);
+  transform: scale(1.03);
+}
+
+
+/* ================= GALERIE ================= */
+.gallery img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  border: 2px solid #0040ff;
+}
+
+.linktree {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.142);
+  color: rgb(35, 2, 2);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.linktree:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ================= ENTÊTE ARTISTE (IMAGE + TEXTE) ================= */
+.artist-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.artist-image {
+  flex-shrink: 0;
+}
+
+.artist-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.artist-text {
+  flex: 1;
+}
+
+.artist-text h2 {
+  margin-top: 0;
+}
+
+.artist-text p {
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+
+/* ------- STYLE CHIC + ESPACÉ ------- */
+
+section {
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+
+/* HISTORIQUE */
+.history {
+  max-width: 75%;
+  margin: 50px auto;
+  padding: 30px 20px;
+  gap: 30px;
+  justify-content: center;
+  transform: none;
+}
+
+.history-text {
+  background: rgba(255, 208, 0, 0.45);
+  backdrop-filter: blur(3px);
+  border-radius: 22px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* IMAGE de l’historique */
+.history-images img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ZONE DE CONTENU */
+.content-area {
+  background: rgba(255, 208, 0, 0.45);
+  backdrop-filter: blur(3px);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ARTISTES */
+.artists-flex {
+  gap: 50px;
+}
+
+.artist-text {
+  background: rgba(114, 100, 34, 0.45);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/*==========ADAPTATIF==========*/
+/* ============================ */
+/*          TABLETTE            */
+/* ============================ */
+@media (max-width: 1024px) {
+
+  h1.center-title {
+    font-size: 4rem;
+  }
+
+  .history {
+    max-width: 600px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .history-images img {
+    max-width: 180px;
+  }
+
+  .artists-flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .content-area {
+    max-height: none;
+    padding: 20px;
+  }
+
+  .artist-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .artist-image img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+
+/* ============================ */
+/*           MOBILE             */
+/* ============================ */
+@media (max-width: 768px) {
+
+  /* -- HEADER -- */
+  .header {
+    /* flex-direction: column; */
+    gap: 10px;
+  }
+
+  .genre-buttons {
+    position: static;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .home-btn {
+    position: static !important;
+    margin-bottom: 10px;
+  }
+
+
+  /* --- TITRE --- */
+  h1.center-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+
+  /* --- HISTORIQUE --- */
+  .history {
+    flex-direction: column;
+    max-width: 90%;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .history-images img {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+
+  .history-text {
+    text-align: justify;
+    padding: 15px;
+  }
+
+
+  /* --- CARTES ARTISTES --- */
+  .artist-cards {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+  }
+
+  .artist-card {
+    scroll-snap-align: center;
+  }
+
+  .card {
+    width: 160px;
+    height: 220px;
+  }
+
+
+  /* --- ZONE DE CONTENU --- */
+  .content-area {
+    padding: 15px;
+    max-height: none;
+    width: 100%;
+  }
+
+
+  /* --- PAGE ARTISTE --- */
+  .artist-header {
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .artist-image img {
+    width: 90%;
+    height: auto;
+  }
+
+
+  /* --- GALERIE --- */
+  .gallery img {
+    width: 45%;
+    height: 150px;
+  }
+
+}
+
+
+/* ============================ */
+/*         TRES PETITS          */
+/* ============================ */
+@media (max-width: 450px) {
+
+  h1.center-title {
+    font-size: 2.3rem;
+  }
+
+  .card {
+    width: 150px;
+    height: 200px;
+  }
+
+  .gallery img {
+    width: 48%;
+    height: 130px;
+  }
+}

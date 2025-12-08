@@ -1,10 +1,10 @@
-/* ================= RESET ================= */
+/* ================= RÉINITIALISATION GLOBALE ================= */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
-/* ================= THÈME ================= */
+/* ================= THÈME PAR GENRE MUSICAL ================= */
 body.pop-theme {
   background-color: #fce4ec;
   color: black;
@@ -17,10 +17,10 @@ body.rnb-theme {
 
 body.kpop-theme {
   background-color: #f9f5ff; /* fond violet très clair */
-  color: #333; /* texte doux pour lisibilité */
+  color: #333; /* texte doux pour une bonne lisibilité */
 }
 
-/* ================= ANIMATION DÉGRADÉ ================= */
+/* ================= ANIMATION DE DÉGRADÉ DU FOND ================= */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -33,7 +33,7 @@ body.kpop-theme {
   }
 }
 
-/* ================= HEADER ================= */
+/* ================= EN-TÊTE (HEADER) PRINCIPAL ================= */
 .header {
   display: flex;
   align-items: center;
@@ -101,7 +101,7 @@ body.kpop-theme {
   filter: brightness(1.1);
 }
 
-/* ================= HISTOIRE ================= */
+/* ================= SECTION HISTOIRE / CONTEXTE ================= */
 .history {
   display: flex;
   gap: 20px;
@@ -146,7 +146,7 @@ body.kpop-theme {
   }
 }
 
-/* ================= ARTISTES ================= */
+/* ================= SECTION LISTE D’ARTISTES ================= */
 .container {
   display: flex;
   flex-direction: column;
@@ -173,6 +173,7 @@ body.kpop-theme {
   padding-right: 10px;
 }
 
+/* Scroll vertical pour la colonne de cartes artistes */
 .artist-cards::-webkit-scrollbar {
   width: 8px;
 }
@@ -195,6 +196,7 @@ body.kpop-theme {
   cursor: pointer;
 }
 
+/* Carte avec effet flip (recto/verso) */
 .card {
   width: 180px;
   height: 250px;
@@ -203,6 +205,7 @@ body.kpop-theme {
   transition: transform 0.6s;
 }
 
+/* Association carte ↔ bouton radio : rotation au clic */
 #a1:checked ~ .artists-flex .artist-cards label[for="a1"] .card,
 #a2:checked ~ .artists-flex .artist-cards label[for="a2"] .card,
 #a3:checked ~ .artists-flex .artist-cards label[for="a3"] .card,
@@ -230,6 +233,7 @@ body.kpop-theme {
   transform: rotateY(180deg);
 }
 
+/* Faces recto/verso de la carte artiste */
 .card-front,
 .card-back {
   position: absolute;
@@ -257,6 +261,7 @@ body.kpop-theme {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
+/* Verso de la carte avec fond dégradé */
 .card-back {
   transform: rotateY(180deg);
   display: flex;
@@ -272,8 +277,9 @@ body.kpop-theme {
   text-align: center;
 }
 
+/* Zone de contenu détaillé à droite des cartes */
 .content-area {
-  position: relative; /* pour gérer la page d'accueil */
+  position: relative; /* nécessaire pour positionner la page d’accueil par-dessus */
   flex: 1;
   padding: 30px;
   max-height: 800px;
@@ -287,6 +293,7 @@ body.kpop-theme {
   border-radius: 12px;
 }
 
+/* Scroll vertical pour la zone de contenu */
 .content-area::-webkit-scrollbar {
   width: 8px;
 }
@@ -305,6 +312,7 @@ body.kpop-theme {
   background: rgba(0, 0, 0, 0.4);
 }
 
+/* Bloc de contenu pour chaque artiste */
 .artist-page {
   display: none;
   padding: 30px 0;
@@ -314,6 +322,7 @@ body.kpop-theme {
   z-index: 2;
 }
 
+/* Titres des sections artistes / histoire */
 .artist-page h2,
 .artist-page h3,
 .history-text h2 {
@@ -325,6 +334,7 @@ body.kpop-theme {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* Animation d’apparition du contenu */
 @keyframes fade {
   from {
     opacity: 0;
@@ -336,7 +346,7 @@ body.kpop-theme {
   }
 }
 
-/* ================= MASQUER PAGE D'ACCUEIL QUAND ARTISTE SELECTIONNE ================= */
+/* ================= MASQUER LA PAGE D’ACCUEIL QUAND UN ARTISTE EST SÉLECTIONNÉ ================= */
 #a1:checked ~ .artists-flex .content-area #default-page,
 #a2:checked ~ .artists-flex .content-area #default-page,
 #a3:checked ~ .artists-flex .content-area #default-page,
@@ -364,7 +374,7 @@ body.kpop-theme {
   display: none;
 }
 
-/* Afficher la page de l'artiste correspondant */
+/* Affichage de la page de contenu liée à l’artiste sélectionné */
 #a1:checked ~ .artists-flex .content-area #page1,
 #a2:checked ~ .artists-flex .content-area #page2,
 #a3:checked ~ .artists-flex .content-area #page3,
@@ -392,7 +402,7 @@ body.kpop-theme {
   display: block;
 }
 
-/* ================= PAGE D’ACCUEIL ================= */
+/* ================= PAGE D’ACCUEIL (AVANT CHOIX D’ARTISTE) ================= */
 .default-page {
   position: absolute;
   top: 0;
@@ -424,6 +434,7 @@ body.kpop-theme {
   color: #444;
 }
 
+/* Flèche animée pour inciter à faire défiler / cliquer */
 .arrow {
   font-size: 40px;
   margin-bottom: 20px;
@@ -442,8 +453,7 @@ body.kpop-theme {
   }
 }
 
-/*================Top 3===============*/
-
+/* ================ TOP 3 MORCEAUX RECOMMANDÉS =============== */
 .music-list {
   list-style: none;
   padding: 0;
@@ -465,7 +475,8 @@ body.kpop-theme {
   background: rgba(222, 20, 182, 0.25);
   transform: scale(1.03);
 }
-/* ================= GALLERY ================= */
+
+/* ================= GALERIE D’IMAGES (ALBUMS / PHOTOS) ================= */
 .gallery img {
   width: 180px;
   height: 180px;
@@ -480,7 +491,7 @@ body.kpop-theme {
   border: 2px solid #cda4ff;
 }
 
-/* ================= LINKTREE ================= */
+/* ================= BOUTON VERS LE LINKTREE / LIENS EXTERNES ================= */
 .linktree {
   display: inline-block;
   margin-top: 20px;
@@ -498,7 +509,7 @@ body.kpop-theme {
   filter: brightness(1.1);
 }
 
-/* ================= ARTIST HEADER ================= */
+/* ================= EN-TÊTE D’ARTISTE (IMAGE + TEXTE) ================= */
 .artist-header {
   display: flex;
   gap: 20px;
@@ -531,24 +542,25 @@ body.kpop-theme {
   margin: 5px 0;
 }
 
-/* ================= RESPONSIVE (Mobile) ================= */
+/* ================= RESPONSIVE (MOBILE PETITS ÉCRANS) ================= */
 @media (max-width: 426px) {
   .artists-flex {
-    flex-direction: column; /* garde la colonne pour le contenu si nécessaire */
+    flex-direction: column; /* empile les cartes et le contenu sur mobile */
   }
 
+  /* Cartes artistes en carrousel horizontal sur mobile */
   .artist-cards {
-    display: flex; /* alignement horizontal */
-    flex-direction: row; /* ligne */
+    display: flex;
+    flex-direction: row; /* alignement en ligne */
     gap: 15px;
     overflow-x: auto; /* scroll horizontal */
     padding: 10px 0;
-    scroll-snap-type: x mandatory; /* snap à chaque carte */
-    -webkit-overflow-scrolling: touch; /* scroll smooth sur iOS */
+    scroll-snap-type: x mandatory; /* snap automatique sur chaque carte */
+    -webkit-overflow-scrolling: touch; /* scroll fluide sur iOS */
   }
 
   .artist-cards::-webkit-scrollbar {
-    height: 12px; /* scrollbar plus large pour mobile */
+    height: 12px; /* scrollbar plus visible sur mobile */
   }
 
   .artist-cards::-webkit-scrollbar-track {
@@ -557,19 +569,19 @@ body.kpop-theme {
   }
 
   .artist-cards::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3); /* pouce plus visible */
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 6px;
   }
 
   .artist-cards::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.5); /* effet au survol */
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .card {
-    flex: 0 0 auto; /* empêche la carte de se rétrécir */
-    width: 160px; /* taille adaptée pour 2-3 cartes visibles */
+    flex: 0 0 auto; /* empêche la réduction de la carte */
+    width: 160px; /* taille adaptée pour voir plusieurs cartes */
     height: 210px;
-    scroll-snap-align: start; /* snap au début de chaque carte */
+    scroll-snap-align: start; /* accrochage au début de chaque carte */
   }
 
   .content-area {
