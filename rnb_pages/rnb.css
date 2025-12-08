@@ -1,0 +1,892 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ================= RÉINITIALISATION GLOBALE ================= */
+body {
+  margin: 0;
+  font-family: "Zen Dots", sans-serif;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px 15px 40px;
+  /* espace réservé en bas + légère marge générale */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /* empêche le défilement vertical de la page */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../images/acceuil-rnb-vert.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(12px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+/* --- CADRE PRINCIPAL EN GLASSMORPHISM --- */
+.cadre {
+  margin-top: 100px;
+  max-width: 750px;
+  /* largeur par défaut du bloc de contenu */
+  max-height: 80vh;
+  /* hauteur maximale du bloc de contenu */
+  border-radius: 20px;
+  /* coins arrondis du cadre */
+
+  padding: 15px;
+
+  background: rgba(255, 255, 255, 0.15);
+  /* fond transparent très léger */
+  backdrop-filter: blur(18px);
+  /* flou de l’arrière-plan à l’intérieur du cadre */
+  -webkit-backdrop-filter: blur(18px);
+
+  border-radius: 25px;
+  overflow-y: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 1025px) {
+  .cadre {
+    max-width: 900px;
+    /* cadre plus large sur les grands écrans */
+  }
+}
+
+/* Scroll personnalisé pour le cadre principal */
+.cadre::-webkit-scrollbar {
+  width: 6px;
+  /* scrollbar fine */
+}
+
+.cadre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cadre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+}
+
+.cadre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Cadre adaptatif sur petits écrans */
+@media (max-width: 600px) {
+  .cadre {
+    padding: 18px;
+    border-radius: 18px;
+    max-height: 65vh;
+  }
+}
+
+
+/* ================= EN-TÊTE (HEADER) ================= */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* aligne les éléments aux extrémités du header */
+  padding: 10px 30px;
+  backdrop-filter: blur(6px);
+  z-index: 999;
+}
+
+/* Boutons de navigation gauche/droite (POP / K-POP) */
+.left-btn,
+.right-btn {
+  color: rgb(154, 66, 66);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
+}
+
+.left-btn:hover,
+.right-btn:hover {
+  background-color: rgba(154, 66, 66, 0.1);
+}
+
+/* Titre central du header (lien vers l’accueil) */
+.header-title {
+  font-family: "Monoton", sans-serif;
+  /* police différente pour le titre */
+  font-size: 3rem;
+  /* taille importante pour le titre central */
+  color: rgb(154, 66, 66);
+  text-decoration: none;
+  font-weight: 400;
+  text-align: center;
+  flex: 1;
+  /* occupe tout l’espace entre les deux boutons */
+  margin: 0 20px;
+  /* espace entre le titre et les boutons */
+  cursor: pointer;
+}
+
+.header-title:hover {
+  color: rgb(200, 100, 100);
+  /* changement de couleur au survol */
+}
+
+/* Header responsive sur petits écrans */
+@media (max-width: 600px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .left-btn,
+  .right-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+/* ================= SECTION HISTOIRE ================= */
+.history {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  /* limite la largeur de la section */
+  margin: 0 auto;
+  /* centre la section dans le cadre */
+  transform: translateX(40px);
+}
+
+.history-text {
+  flex: 1;
+  border-radius: 12px;
+  /* coins arrondis pour le bloc texte */
+  padding: 20px;
+  /* espace intérieur du bloc texte */
+  background-color: rgba(120, 58, 58, 0.542);
+  /* fond légèrement teinté pour détacher le texte */
+  text-align: justify;
+}
+
+.history-text h2 {
+  color: rgb(154, 66, 66);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.history-text p {
+  line-height: 1.5;
+}
+
+.history-images {
+  flex-shrink: 0;
+  /* empêche l’image de se réduire trop fortement */
+}
+
+.history-images img {
+  width: 100%;
+  max-width: 220px;
+  /* largeur maximale de l’image */
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+
+@media (max-width: 768px) {
+  .history {
+    flex-direction: column;
+  }
+
+  .history-images img {
+    width: 100%;
+  }
+}
+
+/* ================= SECTION ARTISTES ================= */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 30px;
+}
+
+.hidden-radio {
+  display: none;
+  /* cache les boutons radio (utilisés pour la sélection) */
+}
+
+.scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  max-height: none;
+  padding: 0;
+}
+
+/* Par défaut (mobile / tablette) : cartes en ligne avec défilement horizontal */
+.artist-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: max-content;
+}
+
+.artist-card {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 250px;
+  cursor: pointer;
+}
+
+/* Scrollbar horizontale du wrapper des cartes */
+.scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
+.artists-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.artist-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  /* empêche les cartes de passer à la ligne */
+}
+
+.artist-card {
+  flex: 0 0 auto;
+  /* empêche la réduction de la largeur de la carte */
+  width: 180px;
+  height: 250px;
+}
+
+.artist-card:first-child {
+  margin-left: 10px;
+  /* légère marge au début de la liste */
+}
+
+.artist-card:last-child {
+  margin-right: 10px;
+  /* légère marge à la fin de la liste */
+}
+
+
+/* Scrollbar pour les cartes (niveau .artist-cards) */
+.artist-cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.artist-cards::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.artist-card {
+  cursor: pointer;
+}
+
+/* À partir de 1024px : colonnes verticales avec scroll vertical pour les cartes */
+@media (min-width: 1024px) {
+  .artist-cards {
+    flex-direction: column;
+    gap: 12px;
+    /* petit espacement vertical entre les cartes */
+    min-width: auto;
+    /* largeur adaptée au contenu */
+    margin: 0;
+    /* suppression des marges */
+    padding: 0;
+    /* suppression des paddings */
+  }
+
+  .scroll-wrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 600px;
+    /* hauteur maximale de la colonne d’artistes */
+    max-width: 210px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .artist-card {
+    width: 180px;
+    height: 250px;
+    margin-left: 0 !important;
+    /* annule toute marge gauche définie ailleurs */
+    margin-right: 0 !important;
+    /* annule toute marge droite définie ailleurs */
+  }
+}
+
+/* Carte artiste avec effet 3D */
+.card {
+  width: 180px;
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Rotation (flip) de la carte au clic via le bouton radio */
+#a1:checked~.artists-flex .artist-cards label[for="a1"] .card,
+#a2:checked~.artists-flex .artist-cards label[for="a2"] .card,
+#a3:checked~.artists-flex .artist-cards label[for="a3"] .card {
+  transform: rotateY(180deg);
+}
+
+/* Faces avant et arrière de la carte */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nom de l’artiste sur la face avant */
+.card-name {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(154, 66, 66);
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Face arrière avec logo RNB en fond */
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("../images/page-rnb-logo2.JPG");
+  background-size: cover;
+  /* remplit toute la carte */
+  background-position: center;
+  /* centre l’image de fond */
+  background-repeat: no-repeat;
+  /* évite la répétition de l’image */
+}
+
+
+.card-back-name {
+  font-size: 20px;
+  color: rgb(154, 66, 66);
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.6),
+    3px 3px 0px rgba(0, 0, 0, 0.5),
+    4px 4px 0px rgba(0, 0, 0, 0.4),
+    5px 5px 3px rgba(0, 0, 0, 0.4),
+    6px 6px 5px rgba(0, 0, 0, 0.35),
+    7px 7px 8px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(120, 58, 58, 0.888);
+  border-radius: 12px;
+  /* rend le cartouche du nom arrondi */
+  padding: 3%;
+}
+
+/* ================= ZONE DE CONTENU (TEXTE + DÉTAIL ARTISTE) ================= */
+.content-area {
+  flex: 1;
+  padding: 30px;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: rgba(120, 58, 58, 0.542);
+  /* fond légèrement transparent pour faire ressortir le texte */
+  border-radius: 12px;
+}
+
+/* Scroll personnalisé pour la zone de contenu */
+.content-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Bloc de contenu par artiste (masqué par défaut) */
+.artist-page {
+  display: none;
+  padding: 30px 0;
+  border-radius: 12px;
+  animation: fade 0.3s ease;
+}
+
+/* Titres des sections dans le contenu artiste + titre histoire */
+.artist-page h2,
+.artist-page h3,
+.history-text h2 {
+  color: rgb(35, 2, 2);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation d’apparition du contenu (fade-in) */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MASQUER LA PAGE D'ACCUEIL LORSQU’UN ARTISTE EST SÉLECTIONNÉ ================= */
+#a1:checked~.artists-flex .content-area #default-page,
+#a2:checked~.artists-flex .content-area #default-page,
+#a3:checked~.artists-flex .content-area #default-page {
+  display: none
+}
+
+/* Affichage de la page correspondant à l’artiste sélectionné */
+#a1:checked~.artists-flex .content-area #page1,
+#a2:checked~.artists-flex .content-area #page2,
+#a3:checked~.artists-flex .content-area #page3 {
+  display: block
+}
+
+/* ================= PAGE D’ACCUEIL (MESSAGE AVANT CHOIX D’ARTISTE) ================= */
+.default-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 40px;
+  animation: fade 0.4s ease;
+  z-index: 1;
+}
+
+.default-content h2 {
+  font-size: 24px;
+  color: rgb(154, 66, 66);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-align: justify;
+  text-align-last: center;
+  background: rgba(255, 255, 255, 0.142);
+  padding: 6px 14px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.default-content p {
+  font-size: 18px;
+  margin-top: 5px;
+  text-align: justify;
+  color: black;
+}
+
+/*================ LISTE TOP 3 TITRES =================*/
+
+.music-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.music-list li a {
+  display: block;
+  background: rgba(255, 255, 255, 0.142);
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgb(35, 2, 2);
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.music-list li a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.03);
+}
+
+
+/* ================= GALERIE D’IMAGES ================= */
+.gallery img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  border: 2px solid #cda4ff;
+}
+
+/* Bouton de lien type Linktree / réseaux */
+.linktree {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.142);
+  color: rgb(35, 2, 2);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.linktree:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ================= EN-TÊTE D’ARTISTE (IMAGE + TEXTE) ================= */
+.artist-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.artist-image {
+  flex-shrink: 0;
+}
+
+.artist-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.artist-text {
+  flex: 1;
+}
+
+.artist-text h2 {
+  margin-top: 0;
+}
+
+.artist-text p {
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+
+/* ------- STYLE GÉNÉRAL PLUS AÉRÉ / CHIC ------- */
+
+section {
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+
+/* Bloc HISTOIRE en version centrée et aérée */
+.history {
+  max-width: 75%;
+  margin: 50px auto;
+  padding: 30px 20px;
+  gap: 30px;
+  justify-content: center;
+  transform: none;
+}
+
+.history-text {
+  background: rgba(120, 58, 58, 0.45);
+  backdrop-filter: blur(3px);
+  border-radius: 22px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* IMAGE de la section histoire (taille et style) */
+.history-images img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* STYLE de la zone de contenu principale (artist-page + défaut) */
+.content-area {
+  background: rgba(120, 58, 58, 0.45);
+  backdrop-filter: blur(3px);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Espacement entre la liste d’artistes et le contenu */
+.artists-flex {
+  gap: 50px;
+}
+
+/* Bloc texte des artistes avec fond légèrement teinté */
+.artist-text {
+  background: rgba(120, 58, 58, 0.35);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/*========== RESPONSIVE GÉNÉRAL ==========*/
+/* ============================ */
+/*          TABLETTE            */
+/* ============================ */
+@media (max-width: 1024px) {
+
+  h1.center-title {
+    font-size: 4rem;
+  }
+
+  .history {
+    max-width: 600px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .history-images img {
+    max-width: 180px;
+  }
+
+  .artists-flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+
+  .content-area {
+    max-height: none;
+    padding: 20px;
+  }
+
+  .artist-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .artist-image img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+
+/* ============================ */
+/*           MOBILE             */
+/* ============================ */
+@media (max-width: 768px) {
+
+  /* -- HEADER sur mobile -- */
+  .header {
+    /* flex-direction: column; */
+    gap: 10px;
+  }
+
+  .genre-buttons {
+    position: static;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .home-btn {
+    position: static !important;
+    margin-bottom: 10px;
+  }
+
+
+  /* --- TITRE PRINCIPAL (accueil) --- */
+  h1.center-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+
+  /* --- SECTION HISTOIRE (version mobile) --- */
+  .history {
+    flex-direction: column;
+    max-width: 90%;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .history-images img {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+
+  .history-text {
+    text-align: justify;
+    padding: 15px;
+  }
+
+
+  /* --- CARTES ARTISTES (carrousel horizontal) --- */
+  .artist-cards {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+  }
+
+  .artist-card {
+    scroll-snap-align: center;
+  }
+
+  .card {
+    width: 160px;
+    height: 220px;
+  }
+
+
+  /* --- ZONE DE CONTENU ARTISTE (mobile) --- */
+  .content-area {
+    padding: 15px;
+    max-height: none;
+    width: 100%;
+  }
+
+
+  /* --- PAGE ARTISTE (image + texte) --- */
+  .artist-header {
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .artist-image img {
+    width: 90%;
+    height: auto;
+  }
+
+
+  /* --- GALERIE D’IMAGES (mobile) --- */
+  .gallery img {
+    width: 45%;
+    height: 150px;
+  }
+
+}
+
+
+/* ============================ */
+/*         TRÈS PETITS ÉCRANS   */
+/* ============================ */
+@media (max-width: 450px) {
+
+  h1.center-title {
+    font-size: 2.3rem;
+  }
+
+  .card {
+    width: 150px;
+    height: 200px;
+  }
+
+  .gallery img {
+    width: 48%;
+    height: 130px;
+  }
+}

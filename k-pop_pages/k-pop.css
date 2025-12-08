@@ -1,0 +1,591 @@
+/* ================= RÉINITIALISATION GLOBALE ================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= THÈME PAR GENRE MUSICAL ================= */
+body.pop-theme {
+  background-color: #fce4ec;
+  color: black;
+}
+
+body.rnb-theme {
+  background-color: #e0f7fa;
+  color: black;
+}
+
+body.kpop-theme {
+  background-color: #f9f5ff; /* fond violet très clair */
+  color: #333; /* texte doux pour une bonne lisibilité */
+}
+
+/* ================= ANIMATION DE DÉGRADÉ DU FOND ================= */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ================= EN-TÊTE (HEADER) PRINCIPAL ================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 30px;
+  position: relative;
+  background: linear-gradient(135deg, #cda4ff, #ffb6c1, #a8e6cf);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header .home-btn {
+  position: absolute;
+  left: 30px;
+  background: linear-gradient(90deg, #cda4ff, #ffb6c1, #a8e6cf);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.header .home-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.center-title {
+  margin: 0;
+  color: #6a0dad; /* violet soutenu */
+  background-color: rgba(255, 182, 193, 0.3); /* rose très clair */
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.genre-buttons {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.genre-btn {
+  background: linear-gradient(90deg, #cda4ff, #ffb6c1, #a8e6cf);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.genre-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ================= SECTION HISTOIRE / CONTEXTE ================= */
+.history {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.history-text {
+  flex: 1;
+}
+
+.history-text h2 {
+  color: #6a0dad; /* violet */
+  background-color: rgba(255, 182, 193, 0.3); /* rose très clair */
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.history-text p {
+  line-height: 1.5;
+}
+
+.history-images {
+  flex-shrink: 0;
+}
+
+.history-images img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .history {
+    flex-direction: column;
+  }
+  .history-images img {
+    width: 100%;
+  }
+}
+
+/* ================= SECTION LISTE D’ARTISTES ================= */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 30px;
+}
+
+.hidden-radio {
+  display: none;
+}
+
+.artists-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.artist-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-shrink: 0;
+  perspective: 1000px;
+  max-height: 820px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scroll vertical pour la colonne de cartes artistes */
+.artist-cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.artist-cards::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.artist-cards::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.artist-card {
+  cursor: pointer;
+}
+
+/* Carte avec effet flip (recto/verso) */
+.card {
+  width: 180px;
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Association carte ↔ bouton radio : rotation au clic */
+#a1:checked ~ .artists-flex .artist-cards label[for="a1"] .card,
+#a2:checked ~ .artists-flex .artist-cards label[for="a2"] .card,
+#a3:checked ~ .artists-flex .artist-cards label[for="a3"] .card,
+#a4:checked ~ .artists-flex .artist-cards label[for="a4"] .card,
+#a5:checked ~ .artists-flex .artist-cards label[for="a5"] .card,
+#a6:checked ~ .artists-flex .artist-cards label[for="a6"] .card,
+#a7:checked ~ .artists-flex .artist-cards label[for="a7"] .card,
+#a8:checked ~ .artists-flex .artist-cards label[for="a8"] .card,
+#a9:checked ~ .artists-flex .artist-cards label[for="a9"] .card,
+#a10:checked ~ .artists-flex .artist-cards label[for="a10"] .card,
+#a11:checked ~ .artists-flex .artist-cards label[for="a11"] .card,
+#a12:checked ~ .artists-flex .artist-cards label[for="a12"] .card,
+#a13:checked ~ .artists-flex .artist-cards label[for="a13"] .card,
+#a14:checked ~ .artists-flex .artist-cards label[for="a14"] .card,
+#a15:checked ~ .artists-flex .artist-cards label[for="a15"] .card,
+#a16:checked ~ .artists-flex .artist-cards label[for="a16"] .card,
+#a17:checked ~ .artists-flex .artist-cards label[for="a17"] .card,
+#a18:checked ~ .artists-flex .artist-cards label[for="a18"] .card,
+#a19:checked ~ .artists-flex .artist-cards label[for="a19"] .card,
+#a20:checked ~ .artists-flex .artist-cards label[for="a20"] .card,
+#a21:checked ~ .artists-flex .artist-cards label[for="a21"] .card,
+#a22:checked ~ .artists-flex .artist-cards label[for="a22"] .card,
+#a23:checked ~ .artists-flex .artist-cards label[for="a23"] .card,
+#a24:checked ~ .artists-flex .artist-cards label[for="a24"] .card {
+  transform: rotateY(180deg);
+}
+
+/* Faces recto/verso de la carte artiste */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-name {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Verso de la carte avec fond dégradé */
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #cda4ff, #ffb6c1, #a8e6cf);
+}
+
+.card-back-name {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Zone de contenu détaillé à droite des cartes */
+.content-area {
+  position: relative; /* nécessaire pour positionner la page d’accueil par-dessus */
+  flex: 1;
+  padding: 30px;
+  max-height: 800px;
+  overflow-y: auto;
+  background: linear-gradient(
+    180deg,
+    rgba(205, 164, 255, 0.2),
+    rgba(255, 182, 193, 0.2),
+    rgba(168, 230, 207, 0.2)
+  );
+  border-radius: 12px;
+}
+
+/* Scroll vertical pour la zone de contenu */
+.content-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Bloc de contenu pour chaque artiste */
+.artist-page {
+  display: none;
+  padding: 30px 0;
+  border-radius: 12px;
+  animation: fade 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Titres des sections artistes / histoire */
+.artist-page h2,
+.artist-page h3,
+.history-text h2 {
+  color: #6a0dad;
+  background-color: rgba(255, 182, 193, 0.3);
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation d’apparition du contenu */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MASQUER LA PAGE D’ACCUEIL QUAND UN ARTISTE EST SÉLECTIONNÉ ================= */
+#a1:checked ~ .artists-flex .content-area #default-page,
+#a2:checked ~ .artists-flex .content-area #default-page,
+#a3:checked ~ .artists-flex .content-area #default-page,
+#a4:checked ~ .artists-flex .content-area #default-page,
+#a5:checked ~ .artists-flex .content-area #default-page,
+#a6:checked ~ .artists-flex .content-area #default-page,
+#a7:checked ~ .artists-flex .content-area #default-page,
+#a8:checked ~ .artists-flex .content-area #default-page,
+#a9:checked ~ .artists-flex .content-area #default-page,
+#a10:checked ~ .artists-flex .content-area #default-page,
+#a11:checked ~ .artists-flex .content-area #default-page,
+#a12:checked ~ .artists-flex .content-area #default-page,
+#a13:checked ~ .artists-flex .content-area #default-page,
+#a14:checked ~ .artists-flex .content-area #default-page,
+#a15:checked ~ .artists-flex .content-area #default-page,
+#a16:checked ~ .artists-flex .content-area #default-page,
+#a17:checked ~ .artists-flex .content-area #default-page,
+#a18:checked ~ .artists-flex .content-area #default-page,
+#a19:checked ~ .artists-flex .content-area #default-page,
+#a20:checked ~ .artists-flex .content-area #default-page,
+#a21:checked ~ .artists-flex .content-area #default-page,
+#a22:checked ~ .artists-flex .content-area #default-page,
+#a23:checked ~ .artists-flex .content-area #default-page,
+#a24:checked ~ .artists-flex .content-area #default-page {
+  display: none;
+}
+
+/* Affichage de la page de contenu liée à l’artiste sélectionné */
+#a1:checked ~ .artists-flex .content-area #page1,
+#a2:checked ~ .artists-flex .content-area #page2,
+#a3:checked ~ .artists-flex .content-area #page3,
+#a4:checked ~ .artists-flex .content-area #page4,
+#a5:checked ~ .artists-flex .content-area #page5,
+#a6:checked ~ .artists-flex .content-area #page6,
+#a7:checked ~ .artists-flex .content-area #page7,
+#a8:checked ~ .artists-flex .content-area #page8,
+#a9:checked ~ .artists-flex .content-area #page9,
+#a10:checked ~ .artists-flex .content-area #page10,
+#a11:checked ~ .artists-flex .content-area #page11,
+#a12:checked ~ .artists-flex .content-area #page12,
+#a13:checked ~ .artists-flex .content-area #page13,
+#a14:checked ~ .artists-flex .content-area #page14,
+#a15:checked ~ .artists-flex .content-area #page15,
+#a16:checked ~ .artists-flex .content-area #page16,
+#a17:checked ~ .artists-flex .content-area #page17,
+#a18:checked ~ .artists-flex .content-area #page18,
+#a19:checked ~ .artists-flex .content-area #page19,
+#a20:checked ~ .artists-flex .content-area #page20,
+#a21:checked ~ .artists-flex .content-area #page21,
+#a22:checked ~ .artists-flex .content-area #page22,
+#a23:checked ~ .artists-flex .content-area #page23,
+#a24:checked ~ .artists-flex .content-area #page24 {
+  display: block;
+}
+
+/* ================= PAGE D’ACCUEIL (AVANT CHOIX D’ARTISTE) ================= */
+.default-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 40px;
+  animation: fade 0.4s ease;
+  z-index: 1;
+}
+
+.default-content h2 {
+  font-size: 24px;
+  color: #6a0dad;
+  background-color: rgba(255, 182, 193, 0.3);
+  padding: 6px 14px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.default-content p {
+  font-size: 18px;
+  margin-top: 5px;
+  color: #444;
+}
+
+/* Flèche animée pour inciter à faire défiler / cliquer */
+.arrow {
+  font-size: 40px;
+  margin-bottom: 20px;
+  animation: arrowBounce 1.5s infinite ease-in-out;
+}
+
+@keyframes arrowBounce {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ================ TOP 3 MORCEAUX RECOMMANDÉS =============== */
+.music-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.music-list li a {
+  display: block;
+  background: rgba(164, 46, 185, 0.142);
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgb(72, 10, 76);
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.music-list li a:hover {
+  background: rgba(222, 20, 182, 0.25);
+  transform: scale(1.03);
+}
+
+/* ================= GALERIE D’IMAGES (ALBUMS / PHOTOS) ================= */
+.gallery img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  border: 2px solid #cda4ff;
+}
+
+/* ================= BOUTON VERS LE LINKTREE / LIENS EXTERNES ================= */
+.linktree {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #cda4ff, #ffb6c1, #a8e6cf);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.linktree:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ================= EN-TÊTE D’ARTISTE (IMAGE + TEXTE) ================= */
+.artist-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.artist-image {
+  flex-shrink: 0;
+}
+
+.artist-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.artist-text {
+  flex: 1;
+}
+
+.artist-text h2 {
+  margin-top: 0;
+}
+
+.artist-text p {
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+/* ================= RESPONSIVE (MOBILE PETITS ÉCRANS) ================= */
+@media (max-width: 426px) {
+  .artists-flex {
+    flex-direction: column; /* empile les cartes et le contenu sur mobile */
+  }
+
+  /* Cartes artistes en carrousel horizontal sur mobile */
+  .artist-cards {
+    display: flex;
+    flex-direction: row; /* alignement en ligne */
+    gap: 15px;
+    overflow-x: auto; /* scroll horizontal */
+    padding: 10px 0;
+    scroll-snap-type: x mandatory; /* snap automatique sur chaque carte */
+    -webkit-overflow-scrolling: touch; /* scroll fluide sur iOS */
+  }
+
+  .artist-cards::-webkit-scrollbar {
+    height: 12px; /* scrollbar plus visible sur mobile */
+  }
+
+  .artist-cards::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+  }
+
+  .artist-cards::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+  }
+
+  .artist-cards::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .card {
+    flex: 0 0 auto; /* empêche la réduction de la carte */
+    width: 160px; /* taille adaptée pour voir plusieurs cartes */
+    height: 210px;
+    scroll-snap-align: start; /* accrochage au début de chaque carte */
+  }
+
+  .content-area {
+    margin-top: 20px;
+    max-height: none;
+  }
+}

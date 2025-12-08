@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POP</title>
+    <link rel="stylesheet" href="pop.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- ================= EN-TÊTE (HEADER) PRINCIPAL ================= -->
+    <header class="header">
+        <a href="../rnb_pages/rnb.html" class="left-btn">RNB</a>
+
+        <!-- Titre central cliquable (retour à la page d’accueil) -->
+        <a href="../index.html" class="header-title">POP</a>
+
+        <a href="../k-pop_pages/k-pop.html" class="right-btn">K-POP</a>
+    </header>
+
+    <div class="cadre">
+
+        <!-- ================= SECTION HISTOIRE / DESCRIPTION DE LA POP ================= -->
+        <section class="history">
+            <div class="history-images">
+                <img src="../images/acceuil-pop-vert.png" alt="POP" />
+            </div>
+            <div class="history-text">
+                <h2>L'Histoire de la POP</h2>
+                <p>
+                    La <strong>POP</strong> est un genre musical caractérisé par des mélodies accrocheuses, des rythmes
+                    entraînants et une production accessible au grand public.
+                    Née dans les années 1950, elle a évolué en intégrant des influences du rock, de la soul, de
+                    l'électronique et du hip-hop.
+                    La musique pop se distingue par ses structures simples, ses paroles universelles et son objectif de
+                    plaire au plus large auditoire possible, ce qui en fait l'un des genres les plus dominants et
+                    influents de la musique contemporaine.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= SECTION ARTISTES POP ================= -->
+        <section class="artists-section">
+            <div class="container">
+
+                <!-- Boutons radio pour sélectionner un artiste -->
+                <input type="radio" name="artist" id="a1" class="hidden-radio" />
+                <input type="radio" name="artist" id="a2" class="hidden-radio" />
+                <input type="radio" name="artist" id="a3" class="hidden-radio" />
+
+                <div class="artists-flex">
+
+                    <!-- Liste des cartes artistes (cliquables) -->
+                    <div class="scroll-wrapper">
+                        <div class="artist-cards">
+
+                            <!-- Carte artiste 1 : Lady Gaga -->
+                            <label for="a1" class="artist-card">
+                                <div class="card">
+                                    <div class="card-front">
+                                        <img src="../images/pop-LG1.jpeg" alt="Artiste 1" />
+                                        <div class="card-name">LADY GAGA</div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="card-back-name">LADY GAGA</div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Carte artiste 2 : The Weeknd -->
+                            <label for="a2" class="artist-card">
+                                <div class="card">
+                                    <div class="card-front">
+                                        <img src="../images/pop-TW1.jpg" alt="Artiste 2" />
+                                        <div class="card-name">THE WEEKND</div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="card-back-name">THE WEEKND</div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Carte artiste 3 : Beyoncé -->
+                            <label for="a3" class="artist-card">
+                                <div class="card">
+                                    <div class="card-front">
+                                        <img src="../images/pop-BE2.jpg" alt="Artiste 3" />
+                                        <div class="card-name">BEYONCÉ</div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="card-back-name">BEYONCÉ</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <!-- ================= CONTENU DÉTAILLÉ DES ARTISTES ================= -->
+
+                    <div class="content-area">
+
+                        <br>
+
+                        <!-- Page d’accueil affichée tant qu’aucun artiste n’est sélectionné -->
+                        <div id="default-page">
+                            <div class="default-content">
+                                <h2>Venez découvrir les artistes de cette catégorie</h2>
+                                <br>
+                                <p>Cliquez sur une carte pour découvrir ses informations.</p>
+                            </div>
+                        </div>
+
+                        <!-- Page artiste 1 : Lady Gaga -->
+                        <div class="artist-page" id="page1">
+                            <div class="artist-header">
+                                <div class="artist-image">
+                                    <img src="../images/pop-LG5.jpg" alt="Artiste 1" />
+                                </div>
+                                <div class="artist-text">
+                                    <h2>LADY GAGA</h2>
+                                    <p><strong>Pays :</strong> États-Unis</p>
+                                    <p>Stefani Germanotta, connue sous le nom de Lady Gaga, est une icône pop mondiale.
+                                        Célèbre pour son style avant-gardiste, ses performances spectaculaires et ses
+                                        ballades émouvantes, elle a révolutionné l'industrie musicale. Son univers mêle
+                                        art, mode et musique dans une explosion de créativité sans limites.</p>
+                                </div>
+                            </div>
+
+                            <h3>Les plus écoutés ! </h3>
+                            <ul class="music-list">
+                                <li><a href="https://music.apple.com/fr/album/die-with-a-smile/1762656724?i=1762656732"
+                                        target="_blank">Die With A Smile</a></li><br>
+                                <li><a href="https://music.apple.com/fr/album/the-dead-dance/1837310866?i=1837310878"
+                                        target="_blank">The Dead Dance</a></li><br>
+                                <li><a href="https://music.apple.com/fr/album/abracadabra/1793869707?i=1793869710"
+                                        target="_blank">Abracadabra</a></li>
+                            </ul>
+
+                            <br>
+                            <h3>Liens : </h3>
+                            <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
+
+                            <h3>Galerie</h3>
+                            <div class="gallery">
+                                <img src="../images/pop-LG-THE_FAME_MONSTER.jpg" alt="photo de l'artiste #">
+                                <img src="../images/pop-LG-ARTPOP.jpg" alt="photo de l'artiste #">
+                                <img src="../images/pop-LG-JOANNE.jpg" alt="photo de l'artiste #">
+                                <img src="../images/pop-LG-CHROMATICA.jpg" alt="photo de l'artiste #">
+                                <img src="../images/pop-LG2.jpg" alt="photo de l'artiste #">
+                                <img src="../images/pop-LG3.webp" alt="photo de l'artiste #">
+                                <img src="../images/pop-LG4.webp" alt="photo de l'artiste #">
+                                <img src="../images/pop-LG6.jpeg" alt="photo de l'artiste #">
+                            </div>
+                        </div>
+
+                        <!-- Page artiste 2 : The Weeknd -->
+                        <div class="artist-page" id="page2">
+                            <div class="artist-header">
+                                <div class="artist-image">
+                                    <img src="../images/pop-TW2.webp" alt="Artiste 2" />
+                                </div>
+                                <div class="artist-text">
+                                    <h2>THE WEEKND</h2>
+                                    <p><strong>Pays :</strong> Canada</p>
+                                    <p>Abel Makkonen Tesfaye, connu sous le nom de The Weeknd, est un artiste canadien
+                                        qui a révolutionné la musique pop et R&B moderne. Avec sa voix distinctive et
+                                        ses productions atmosphériques, il crée un univers sombre et cinématographique.
+                                        Ses albums explorent les thèmes de l'amour, de la solitude et de la rédemption,
+                                        mêlant synthétiseurs hypnotiques et beats trap. Reconnu pour ses visuels
+                                        spectaculaires et ses performances de haut niveau, The Weeknd est devenu l'une
+                                        des plus grandes stars de la musique contemporaine.</p>
+                                </div>
+                            </div>
+
+                            <h3>Les plus écoutés ! </h3>
+                            <ul class="music-list">
+                                <li><a href="https://music.apple.com/fr/album/timeless/1770380869?i=1770380890"
+                                        target="_blank">Timeless</a></li><br>
+                                <li><a href="https://music.apple.com/fr/album/dancing-in-the-flames/1768635694?i=1768635695"
+                                        target="_blank">Dancing In The Flames</a></li><br>
+                                <li><a href="https://music.apple.com/fr/album/cry-for-me/1793654348?i=1793654350"
+                                        target="_blank">Cry For Me</a>
+                                </li>
+                            </ul>
+
+                            <br>
+                            <h3>Liens : </h3>
+                            <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
+
+                            <h3>Galerie</h3>
+                            <div class="gallery">
+                                <img src="../images/pop-TW-AFTER_HOURS.jpg" alt="photo de l'artiste">
+                                <img src="../images/pop-TW-DAWN_FM.webp" alt="photo de l'artiste">
+                                <img src="../images/pop-TW3.jpg" alt="photo de l'artiste">
+                                <img src="../images/pop-TW4.jpg" alt="photo de l'artiste">
+                            </div>
+                        </div>
+
+                        <!-- Page artiste 3 : Beyoncé -->
+                        <div class="artist-page" id="page3">
+                            <div class="artist-header">
+                                <div class="artist-image">
+                                    <img src="../images/pop-BE1.webp" alt="Artiste 3" />
+                                </div>
+                                <div class="artist-text">
+                                    <h2>BEYONCÉ</h2>
+                                    <p><strong>Pays :</strong> États-Unis</p>
+                                    <p>Beyoncé Knowles est une artiste légendaire qui a révolutionné la musique pop, R&B
+                                        et hip-hop.
+                                        Reine de la scène mondiale, elle est reconnue pour ses performances vocales
+                                        exceptionnelles, ses chorégraphies innovantes et ses vidéoclips
+                                        cinématographiques.
+                                        Son univers mêle empowerment, féminisme et célébration de la culture noire avec
+                                        une production musicale de haut niveau.
+                                        De son passage avec Destiny's Child à sa carrière solo brillante, Beyoncé
+                                        incarne l'excellence artistique et l'authenticité, explorant des thèmes d'amour,
+                                        de liberté et de force intérieure dans ses albums conceptuels audacieux.</p>
+                                </div>
+                            </div>
+
+                            <h3>Les plus écoutés ! </h3>
+                            <ul class="music-list">
+                                <li><a href="https://music.apple.com/fr/album/crazy-in-love-feat-jay-z/201274359?i=201274644"
+                                        target="_blank">Crazy In Love</a></li><br>
+                                <li><a href="https://music.apple.com/fr/album/halo/296016891?i=296016893"
+                                        target="_blank">Halo</a></li><br>
+                                <li><a href="https://music.apple.com/fr/album/texas-hold-em/1730408497?i=1730408498"
+                                        target="_blank">Texas Hold 'Em</a></li>
+                            </ul>
+
+                            <br>
+                            <h3>Liens : </h3>
+                            <p><a class="linktree" href="#" target="_blank">🔗 Linktree</a></p>
+
+                            <h3>Galerie</h3>
+                            <div class="gallery">
+                                <img src="../images/pop-BE-BEYONCÉ.jpeg" alt="photo de l'artiste chanteuse #">
+                                <img src="../images/pop-BE-LEMONADE.jpg" alt="photo de l'artiste chanteuse #">
+                                <img src="../images/pop-BE-COWBOY_CARTER.webp" alt="photo de l'artiste chanteuse #">
+                                <img src="../images/pop-BE-DANGEROUSLY_IN_LOVE.png" alt="photo de l'artiste chanteuse #">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
